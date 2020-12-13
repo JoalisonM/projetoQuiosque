@@ -7,39 +7,55 @@ module.exports = {
         return response.json(cliente);
     },
 
-    async create(request, response){
-        const {cpf, nome, senha} = request.body;
+    async create(request, response, next){
+        try {
+                const {cpf, nome, senha} = request.body;
 
-        const id = generateUniqueId();
-
-        await connection('cliente').insert({
-            id,
-            cpf,
-            nome,
-            senha,
-        });
-
-        return response.json({id});
-    },
-
-    async put(request, response){
-
-    },
-
-    async delete(request, response){
-        const {cpf} = request.params;
-
-        const usuario = await connection('cliente')
-            .where('cpf', cpf)
-            .first();
-
-        if(usuario.cpf != cpf) {
-            return response.status(401).json({error: 'Operação não permitida '});
+                const id = generateUniqueId();
+        
+                await connection('cliente').insert({
+                    id,
+                    cpf,
+                    nome,
+                    senha,
+                });
+    
+                return response.json({id});
+        } catch (error) {
+            next(error)
         }
 
-        await connection('cliente').where('cpf', cpf).delete();
+    },
 
-        return response.status(204).send();
+    async update(request, response, next){
+        try {
+            const {nome, senha} = request.body
+            const {id} = request.params
+
+            await connection('cliente')
+            .update({nome, senha})
+            .where({id})
+
+            return response.send();
+
+        } catch (error) {
+            next(error)
+        }
+    },
+
+    async delete(request, response, next){
+        try {
+            const {id} = request.params
+
+            await connection('cliente')
+            .where({id})
+            .del()
+
+            return response.send()
+
+        } catch (error) {
+            next(error)
+        }
     }
 
 };
