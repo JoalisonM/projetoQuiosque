@@ -19,24 +19,24 @@ module.exports = {
                     nome,
                     senha,
                 });
-    
+
                 return response.json({id});
         } catch (error) {
-            next(error)
+            next(response.status(401).json({ error: 'Operation not permited.' }))
         }
 
     },
 
     async update(request, response, next){
         try {
-            const {nome, senha} = request.body
+            const body = request.body
             const {id} = request.params
 
             await connection('cliente')
-            .update({nome, senha})
+            .update(body)
             .where({id})
 
-            return response.send();
+            return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
             next(error)
@@ -51,7 +51,7 @@ module.exports = {
             .where({id})
             .del()
 
-            return response.send()
+            return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
             next(error)

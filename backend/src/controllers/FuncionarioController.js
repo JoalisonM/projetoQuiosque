@@ -22,10 +22,10 @@ module.exports = {
                 papel,
             });
 
-            return response.send();
+            return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
-            next(error)
+            next(response.status(401).json({ error: 'Operation not permited.' }));
         }
 
         return response.json({id});
@@ -33,14 +33,14 @@ module.exports = {
 
     async update(request, response, next){
         try {
-            const {nome, senha, papel} = request.body
+            const body = request.body
             const {id} = request.params
 
             await connection('funcionario')
-            .update({nome, senha, papel})
+            .update(body)
             .where({id})
 
-            return response.send();
+            return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
             next(error)
@@ -55,7 +55,7 @@ module.exports = {
             .where({id})
             .del()
 
-            return response.send()
+            return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
             next(error)
