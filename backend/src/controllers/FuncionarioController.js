@@ -34,10 +34,10 @@ module.exports = {
                 papel,
             });
 
-            return response.status(200).json({ sucess: 'Operation performed successfully.' })
+            return response.status(201).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
-            next(response.status(404).json({ error: 'Operation not permited.' }));
+            next(error);
         }
 
         return response.json({id});
@@ -45,17 +45,17 @@ module.exports = {
 
     async update(request, response, next){
         try {
-            const body = request.body
-            const {id} = request.params
+            const body = request.body;
+            const {id} = request.params;
 
             await connection('funcionario')
-            .update(body)
-            .where({id})
+                .update(body)
+                .where({id});
 
-            return response.status(200).json({ sucess: 'Operation performed successfully.' })
+            return response.send();
 
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
 
@@ -64,13 +64,13 @@ module.exports = {
             const {id} = request.params
 
             await connection('funcionario')
-            .where({id})
-            .del()
+                .where({id})
+                .del();
 
-            return response.status(200).json({ sucess: 'Operation performed successfully.' })
+            return response.send();
 
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 

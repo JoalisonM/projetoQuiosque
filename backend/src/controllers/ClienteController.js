@@ -11,7 +11,6 @@ module.exports = {
             .limit(pageSize)
             .offset((page - 1) * pageSize)
             .select('*');
-        
 
         let clientes = {count: count['count(*)'], rows: cliente};
 
@@ -34,41 +33,41 @@ module.exports = {
                     senha,
                 });
 
-                return response.json({id});
+                return response.status(201).json({ sucess: 'Operation performed successfully.' });
         } catch (error) {
-            next(response.status(404).json({ error: 'Operation not permited.' }))
+            next(error);
         }
 
     },
 
     async update(request, response, next){
         try {
-            const body = request.body
-            const {id} = request.params
+            const body = request.body;
+            const {id} = request.params;
 
             await connection('cliente')
-            .update(body)
-            .where({id})
+                .update(body)
+                .where({id});
 
-            return response.status(200).json({ sucess: 'Operation performed successfully.' })
+            return response.send();
 
         } catch (error) {
-            next(error)
+            next(error);
         }
     },
 
     async delete(request, response, next){
         try {
-            const {id} = request.params
+            const {id} = request.params;
 
             await connection('cliente')
-            .where({id})
-            .del()
+                .where({id})
+                .del();
 
-            return response.status(200).json({ sucess: 'Operation performed successfully.' })
+            return response.send();
 
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
