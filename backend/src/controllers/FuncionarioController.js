@@ -3,8 +3,20 @@ const connection = require('../database/connection');
 
 module.exports = {
     async list(request, response){
-        const cliente = await connection('funcionario').select('*');
-        return response.json(cliente);
+        const { page = 1, pageSize = 5 } = request.query;
+
+        const [count] = await connection('cliente').count();
+
+        const funcionario = await connection('funcionario')
+            .limit(pageSize)
+            .offset((page - 1) * pageSize)
+            .select('*');
+
+        let funcionarios = {count: count['count(*)'], rows: funcionario};
+
+        response.header('X-Total-Count', count['count(*)']);
+
+        return response.json(funcionarios);
     },
 
     async create(request, response, next){
@@ -25,7 +37,7 @@ module.exports = {
             return response.status(200).json({ sucess: 'Operation performed successfully.' })
 
         } catch (error) {
-            next(response.status(401).json({ error: 'Operation not permited.' }));
+            next(response.status(404).json({ error: 'Operation not permited.' }));
         }
 
         return response.json({id});
