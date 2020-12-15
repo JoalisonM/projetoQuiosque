@@ -5,7 +5,7 @@ module.exports = {
     async list(request, response){
         const { page = 1, pageSize = 5 } = request.query;
 
-        const [count] = await connection('cliente').count();
+        const [count] = await connection('funcionario').count();
 
         const funcionario = await connection('funcionario')
             .limit(pageSize)
