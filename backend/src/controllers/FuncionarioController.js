@@ -16,7 +16,12 @@ module.exports = {
 
         response.header('X-Total-Count', count['count(*)']);
 
-        return response.json(funcionarios);
+        if (funcionario.length == 0){
+            return response.json({mensagem: "não há funcionários cadastrados no sistema"});
+        }
+        else{
+            return response.json(funcionarios);
+        }
     },
 
     async create(request, response, next){
