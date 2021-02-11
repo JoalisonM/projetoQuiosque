@@ -31,6 +31,10 @@ module.exports = {
 
             const id = generateUniqueId();
 
+            if (cpf.length < 11 || cpf.length > 11) {
+                return response.status(401).json({ sucess: 'CPF irregular.' });
+            }
+
             await connection('funcionario').insert({
                 id,
                 cpf,
@@ -68,11 +72,15 @@ module.exports = {
         try {
             const {id} = request.params
 
+            if (!id) {
+                return response.status(401).json({ error: "Operation not permitted" })
+            }
+
             await connection('funcionario')
                 .where({id})
                 .del();
-
-            return response.send();
+            
+            return response.status(204).send();
 
         } catch (error) {
             next(error);

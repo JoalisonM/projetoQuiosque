@@ -30,6 +30,10 @@ module.exports = {
                 const {cpf, nome, senha} = request.body;
 
                 const id = generateUniqueId();
+                
+                if (cpf.length < 11 || cpf.length > 11) {
+                    return response.status(401).json({ sucess: 'CPF irregular.' });
+                }
         
                 await connection('cliente').insert({
                     id,

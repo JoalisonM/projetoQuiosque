@@ -2,10 +2,11 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create (request, response) {
-        const { cpf } = request.body;
+        const { cpf, senha } = request.body;
 
         const cliente = await connection('cliente')
             .where('cpf', cpf)
+            .where('senha', senha)
             .select('nome')
             .first();
         
