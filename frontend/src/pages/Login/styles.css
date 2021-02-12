@@ -1,0 +1,60 @@
+.image{
+    max-width: 403px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.image img{
+    max-width: 403px;
+    margin: 0 auto;
+}
+
+form{
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.ButtonLogin{
+    height: 50px;
+    border: none;
+    background-color: #649F06;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.2s;    
+}
+
+.ButtonLogin:focus{
+    border: none;
+    outline: none;
+}
+
+.ButtonLogin:hover{
+    filter: brightness(110%)
+}
+
+form .links{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+form .links a{
+    text-decoration: none;
+    color: #f00;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+}
+
+.links a p{
+    margin-left: 4px;
+}
+
+
