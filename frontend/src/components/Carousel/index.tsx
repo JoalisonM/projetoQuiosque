@@ -30,7 +30,8 @@ export default class Slide extends React.Component{
             showPlayButton={false} 
             showThumbnails={false} 
             autoPlay={true} 
-            swipingTransitionDuration={200}/> 
+            swipingTransitionDuration={200}
+            stopPropagation={true}/> 
         );
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import IFood from '../../assets/IFoodLogo.png';
+import IFood from '../../assets/IFoodLogo.svg';
 import { FiStar, FiLogIn } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 

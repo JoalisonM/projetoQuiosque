@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCornerUpLeft } from 'react-icons/fi';
-import IFoodLogo from '../../assets/IFoodLogo.png';
+import IFoodLogo from '../../assets/IFoodLogo.svg';
 import './styles.css';
 const Register: React.FC = () => {
     return(
