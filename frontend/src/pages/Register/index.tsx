@@ -1,5 +1,7 @@
 import React from 'react';
 import { FiCornerUpLeft } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import Login from '../Login';
 import IFoodLogo from '../../assets/IFoodLogo.svg';
 import './styles.css';
 const Register: React.FC = () => {
@@ -21,7 +23,7 @@ const Register: React.FC = () => {
                             <input type="text" placeholder="CPF"/>
                             <input type="password" placeholder="Senha"/>
                             <div className="buttons">
-                                <a href="#"><FiCornerUpLeft/> <p>Já tenho registro</p></a>
+                                <Link to={'/'}><FiCornerUpLeft size={18} color={"#F00"}/> <p>Já tenho Cadastro</p></Link>
                                 <button>Concluir cadastro</button>
                             </div>
                         </form>

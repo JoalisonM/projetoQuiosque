@@ -38,23 +38,24 @@ form{
     filter: brightness(110%)
 }
 
-form .links{
+form .actions{
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
 }
 
-form .links a{
-    text-decoration: none;
-    color: #f00;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
+form .actions a{
     display: flex;
+    text-decoration: none;
+    color: #F00;
+    font-family: 'Roboto', sans-serif;
+    align-items: flex-end;
+    font-weight: 600;
+}   
+
+.actions a p{
+    font-size: 13px;
 }
 
-.links a p{
-    margin-left: 4px;
-}
 
 

@@ -1,0 +1,20 @@
+.menu-grid{
+    width: auto;
+    margin-top: 103px;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    row-gap: 20px;
+    column-gap: 320px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    align-self: center;
+}
+
+.product{
+    background-color: #f3f3f3;
+    padding: 20px;
+    display: flex;
+    width: 400px;
+    height: 200px;
+}

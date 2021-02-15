@@ -40,9 +40,13 @@
     align-self: center;
     text-decoration: none;
     color: #F00;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
     font-weight: 600;
+    align-items: flex-end;
+}
+
+.buttons a p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
 }
 
 .register-form .buttons button{
@@ -52,7 +56,15 @@
     color: #FFF;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s;    
 }
+
+.buttons button:hover {
+    filter: brightness(110%);
+}
+
+
  .info-side{
     justify-content: center;
     align-items: center;
