@@ -2,7 +2,7 @@ const express = require('express');
 
 const ClienteController = require('./controllers/ClienteController');
 const FuncionarioController = require('./controllers/FuncionarioController');
-const CardapioController = require('./controllers/CardapioController');
+const ProdutoController = require('./controllers/ProdutoController');
 const SessionClienteController = require('./controllers/SessionClienteController');
 const SessionFuncionarioController = require('./controllers/SessionFuncionarioController');
 
@@ -21,9 +21,9 @@ routes.post('/funcionario', FuncionarioController.create);
 routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
 
-routes.get('/cardapio', CardapioController.list);
-routes.post('/cardapio', CardapioController.create);
-routes.put('/cardapio/:id', CardapioController.update);
-routes.delete('/cardapio/:id', CardapioController.delete);
+routes.get('/produto', ProdutoController.list);
+routes.post('/produto', ProdutoController.create);
+routes.put('/produto/:id', ProdutoController.update);
+routes.delete('/produto/:id', ProdutoController.delete);
 
 module.exports = routes;

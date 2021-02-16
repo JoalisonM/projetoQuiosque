@@ -6,18 +6,18 @@ module.exports = {
     async list(request, response){
         const { page = 1, pageSize = 5 } = request.query;
 
-        const [count] = await connection('cardapio').count();
+        const [count] = await connection('produto').count();
 
-        const cardapio = await connection('cardapio')
+        const produto = await connection('produto')
             .limit(pageSize)
             .offset((page - 1) * pageSize)
             .select('*');
 
-        let cardapios = {count: count['count(*)'], rows: cardapio};
+        let produtos = {count: count['count(*)'], rows: produto};
 
         response.header('X-Total-Count', count['count(*)']);
 
-        return response.json(cardapios);
+        return response.json(produtos);
 
     },
 
@@ -27,7 +27,7 @@ module.exports = {
 
             const id = generateUniqueId();
 
-            await connection('cardapio').insert({
+            await connection('produto').insert({
                 id,
                 titulo,
                 descricao,
@@ -46,7 +46,7 @@ module.exports = {
             const body = request.body;
             const {id} = request.params;
 
-            await connection('cardapio')
+            await connection('produto')
                 .update(body)
                 .where({id});
 
@@ -61,7 +61,7 @@ module.exports = {
         try {
             const {id} = request.params;
 
-            await connection('cardapio')
+            await connection('produto')
                 .where({id})
                 .del();
 
