@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import './styles.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';         
+//import '@fortawesome/fontawesome-free/css/all.min.css';         
 const HomePageClient: React.FC = () => {
     return(
         <>

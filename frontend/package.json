@@ -15,6 +15,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-image-gallery": "^1.0.2",
     "@types/react-router-dom": "^5.1.7",
+    "axios": "^0.21.1",
     "infinite-react-carousel": "^1.2.11",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

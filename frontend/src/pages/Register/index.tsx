@@ -3,8 +3,12 @@ import { FiCornerUpLeft } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Login from '../Login';
 import IFoodLogo from '../../assets/IFoodLogo.svg';
+
+import api from '../../services/api';
 import './styles.css';
+
 const Register: React.FC = () => {
+     
     return(
         <>
                 <ul className="menu-fixed">
@@ -16,7 +20,7 @@ const Register: React.FC = () => {
 
                 <section className="register-container">
                     <div className="form-side">
-                        <form action="submit" className="register-form">
+                        <form className="register-form">
                             <h1>Dados para o cadastro:</h1>
                             <div className="border"></div>
                             <input type="text" placeholder="Nome"/>
