@@ -2,7 +2,7 @@
     max-width: 403px;
     justify-content: center;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .image img{
@@ -16,7 +16,12 @@ form{
     display: flex;
     flex-direction: column;
 }
-
+ form h1{
+     align-self: center;
+     margin-bottom: 25px;
+     font-family: 'Roboto', sans-serif;
+     font-size: 20px;
+ }
 
 .ButtonLogin{
     height: 50px;
@@ -55,6 +60,7 @@ form .actions a{
 
 .actions a p{
     font-size: 13px;
+    margin-left: 5px;
 }
 
 

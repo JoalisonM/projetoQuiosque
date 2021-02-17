@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 
 export default class Header extends React.Component{
+    nomeCliente = localStorage.getItem('NomeCliente');
+
     render(){
         return(
             <section className="headers">
@@ -22,7 +24,7 @@ export default class Header extends React.Component{
                     </div>
                     <div className="right-side">
                         <ul>
-                            <li><Link to={'/'}><FontAwesomeIcon icon={faUserCircle} size={"lg"}/><p>Pedro Gustavo</p></Link></li>
+                            <li><Link to={'/'}><FontAwesomeIcon icon={faUserCircle} size={"lg"}/><p>{this.nomeCliente}</p></Link></li>
                         </ul>
                     </div>
                 </header>

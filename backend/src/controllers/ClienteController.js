@@ -26,26 +26,38 @@ module.exports = {
     },
 
     async create(request, response, next){
-        try {
-                const {cpf, nome, senha} = request.body;
-
-                const id = generateUniqueId();
-                
-                if (cpf.length < 11 || cpf.length > 11) {
-                    return response.status(401).json({ sucess: 'CPF irregular.' });
-                }
         
+        try{
+            const {cpf, nome, senha} = request.body;
+            const id = generateUniqueId();
+            
+
+            
+            const verification = isNaN(cpf);
+                
+            if(verification){
+                throw  "Erro de cadastro: seu CPF deve conter apenas números.";
+            }
+            
+            if (cpf.length < 11 || cpf.length > 10) {
+                throw  "Erro no cadastro: insira um CPF válido!";
+            }
+            
+            try{
                 await connection('cliente').insert({
                     id,
                     cpf,
                     nome,
                     senha,
                 });
-
                 return response.status(201).json({ sucess: 'Operation performed successfully.' });
-        } catch (error) {
-            next(error);
-        }
+            }catch(err){
+                throw "Erro no cadastro: seu CPF já consta na base de dados.";
+            }
+        }catch(err){
+            return response.status(400).send(err);
+        }   
+
 
     },
 

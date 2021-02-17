@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import HomePageClient from '../pages/HomePageClient';
 import MakeOrder from '../pages/MakeOrder';
+import EmployeeLogin from '../pages/EmployeeLogin';
 
 const Routes: React.FC = () => {
     return(
@@ -13,6 +14,7 @@ const Routes: React.FC = () => {
             <Route path="/register" component={Register}/>
             <Route path="/homepage" component={HomePageClient}/>
             <Route path="/morder" component={MakeOrder}/>
+            <Route path="/employee/login" component={EmployeeLogin}/>
         </Switch>
     );
 }
