@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
-import Header from '../../components/Header';
+import Header from '../../components/Header/client';
 import './styles.css';
 const MakeOrder: React.FC = () => {
     return(

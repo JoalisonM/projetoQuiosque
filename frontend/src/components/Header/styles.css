@@ -104,7 +104,7 @@
 }
 
 .header-2 .header-menu{
-    width: 780px;
+    width: 800px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -133,6 +133,8 @@
     font-size: 18px;
     color: #FFF;
 }
+
+.menu-options .employee a{font-size: 15px;}
 
 .menu-options .options a:before{
   content: "";
@@ -182,6 +184,45 @@
 }
 
 .bag-button a{
+    color: #FFF;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px ;
+    width: 100%;
+}   
+
+
+.header-2 .logoff-button-div{
+    width: 246px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.header-2 .logoff-button-div .logoff-button{
+    background-color: rgb(255, 0, 0);
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFF;
+    transition: background-color 0.2s;
+   
+}
+
+.logoff-button-div:hover .logoff-button{
+    background-color: rgb(255, 66, 66);
+}
+
+.logoff-button a{
     color: #FFF;
     display: flex;
     align-items: flex-end;

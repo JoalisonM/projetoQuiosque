@@ -5,7 +5,6 @@ import { FaUserTie, FaUserPlus } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
-import Header2 from '../../components/Header2/notOcult';
 import api from '../../services/api';
 
 const Login: React.FC = () => {
@@ -38,35 +37,38 @@ const Login: React.FC = () => {
          }
     }
     return(
-        <>
-         <ToastContainer/>
-                <Header2 />
-            <div className="image">
-                <img src={IFood} alt="Logo IFood"/>
-            </div>
-
-            <form onSubmit={handeLogin}>
-                <input 
-                type="text" 
-                placeholder="CPF"
-                value={cpf}
-                onChange={e => setCpf(e.target.value)}/>
-
-                <input 
-                type="password" 
-                placeholder="Senha"
-                value={senha}
-                onChange={e => setSenha(e.target.value)}/>
-
-                <button className="ButtonLogin">Login</button>
-                <div className="actions">
-                    <Link to={'/employee/login'}><FaUserTie size={18} color={"#FF0000"}/><p>Sou um funcionário</p></Link>
-                    <Link to={'/register'}><FaUserPlus size={18} color={"#F00000"}/><p>Não possuo Login</p></Link>
-                </div>
-            </form>
+        <div className="content">
             
-        </>
-    );
+            <div className="container">
+            
+                <div className="image">
+                    <img src={IFood} alt="Logo IFood"/>
+                </div>
+
+                <form onSubmit={handeLogin}>
+                    <h1>Faça seu login e aproveite nossos serviços</h1>
+                    <input 
+                    type="text" 
+                    placeholder="CPF (Somente números)"
+                    value={cpf}
+                    onChange={e => setCpf(e.target.value)}/>
+
+                    <input 
+                    type="password" 
+                    placeholder="Senha"
+                    value={senha}
+                    onChange={e => setSenha(e.target.value)}/>
+
+                    <button className="ButtonLogin">Login</button>
+                    <div className="actions">
+                        <Link to={'/employee/login'}><FaUserTie size={18} color={"#FF0000"}/><p>Sou um funcionário</p></Link>
+                        <Link to={'/register'}><FaUserPlus size={18} color={"#F00000"}/><p>Não possuo Login</p></Link>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    );  
 }
 
 export default Login;

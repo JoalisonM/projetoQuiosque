@@ -9,8 +9,9 @@
 
 textarea:focus, input:focus, select:focus  {
     box-shadow: 0 0 0 0;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.356);
     outline: 0;
+    background-color: #ededed;
 } 
 
 body{
@@ -24,13 +25,18 @@ button{
 
 form input{
     height: 50px;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     background-color: #F6F6F6;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     padding-left: 10px;
     font-family: 'Pontano Sans', sans-serif;
     font-size: 13px;
+    transition: background-color  0.2s border 0.5s;
+
 }
 
+form input:hover{
+    background-color: #ededed;
+}
 

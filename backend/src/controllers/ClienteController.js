@@ -39,7 +39,7 @@ module.exports = {
                 throw  "Erro de cadastro: seu CPF deve conter apenas números.";
             }
             
-            if (cpf.length < 11 || cpf.length > 10) {
+            if (cpf.length < 11 || cpf.length > 11) {
                 throw  "Erro no cadastro: insira um CPF válido!";
             }
             
@@ -50,7 +50,7 @@ module.exports = {
                     nome,
                     senha,
                 });
-                return response.status(201).json({ sucess: 'Operation performed successfully.' });
+                return response.status(201).send("Seu cadastro foi realizado com sucesso!");
             }catch(err){
                 throw "Erro no cadastro: seu CPF já consta na base de dados.";
             }

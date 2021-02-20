@@ -1,7 +1,7 @@
 import React from 'react';
 import Savory from  '../../assets/Savory.png';
 import Carousel from '../../components/Carousel';
-import Header from '../../components/Header';
+import Header from '../../components/Header/client';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import './styles.css';
