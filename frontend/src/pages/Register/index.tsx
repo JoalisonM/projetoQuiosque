@@ -59,13 +59,6 @@ const Register: React.FC = () => {
     }
     return(
         <>
-                <ul className="menu-fixed">
-                    <li className="options-menu"><a href="#">Pagina Inicial</a></li>
-                    <li className="options-menu"><a href="#">Cadastre-se</a></li>
-                    <li className="options-menu"><a href="#">Fazer Login</a></li>
-                    <li className="options-menu"><a href="#">Sobre o sistema</a></li>
-                </ul>
-
                 <section className="register-container">
                     <div className="form-side">
                         <form onSubmit={handleRegister} className="register-form">

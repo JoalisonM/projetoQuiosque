@@ -6,37 +6,37 @@ module.exports = {
     async list(request, response){
         const { page = 1, pageSize = 5 } = request.query;
 
-        const [count] = await connection('produto').count();
+        const [count] = await connection('pedido').count();
 
-        const produto = await connection('produto')
+        const pedido = await connection('pedido')
             .limit(pageSize)
             .offset((page - 1) * pageSize)
             .select('*');
 
-        let produtos = {count: count['count(*)'], rows: produto};
+        let pedidos = {count: count['count(*)'], rows: pedido};
 
         response.header('X-Total-Count', count['count(*)']);
 
-        if (produto.length == 0){
-            return response.json({mensagem: "não há produtos cadastrados no sistema"});
+        if (pedido.length == 0){
+            return response.json({mensagem: "não foi realizado nenhum pedido no sistema"});
         }
         else{
-            return response.json(produtos);
+            return response.json(pedidos);
         }
 
     },
 
     async create(request, response, next) {
         try {
-            const { titulo, descricao, valor } = request.body;
+            const { id_cliente, id_produto, qtd } = request.body;
 
             const id = generateUniqueId();
 
-            await connection('produto').insert({
+            await connection('pedido').insert({
                 id,
-                titulo,
-                descricao,
-                valor,
+                id_cliente,
+                id_produto,
+                qtd,
             });
 
             return response.status(201).json({ sucess: 'Operation performed successfully.' });
@@ -46,27 +46,11 @@ module.exports = {
         }
     },
 
-    async update(request, response, next){
-        try {
-            const body = request.body;
-            const {id} = request.params;
-
-            await connection('produto')
-                .update(body)
-                .where({id});
-
-            return response.send();
-
-        } catch (error) {
-            next(error);
-        }
-    },
-
     async delete(request, response, next){
         try {
             const {id} = request.params;
 
-            await connection('produto')
+            await connection('pedido')
                 .where({id})
                 .del();
 
