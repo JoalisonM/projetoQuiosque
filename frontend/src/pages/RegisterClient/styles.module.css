@@ -1,0 +1,99 @@
+.Toastify__toast--success {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.Toastify__toast--error {
+    background-color: var(--red);
+    color: var(--white);
+}
+.registerContainer{
+    max-width: 1000px;
+    height: 550px;
+    margin: 100px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    padding: 40px;
+    background-color: var(--container-background);
+    border-radius: 14px;
+}
+
+.formSide{
+    flex: 1;
+
+}
+
+.registerForm{
+    margin-top: 80px;
+    width: 400px;
+}
+
+.registerForm h1{
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+}
+
+.border{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: var(--green);
+    height: 4px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.buttons a{
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+    color: var(--red);
+    font-weight: 600;
+    align-items: flex-end;
+}
+
+.buttons a p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+.buttons button{
+    border: none;
+    background-color: var(--green-button);
+    width: 140px;
+    color: var(--white);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s;    
+}
+
+.buttons button:hover {
+    filter: brightness(110%);
+}
+
+
+ .infoSide{
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoSide img{
+    margin-top: 60px;
+    width: 380px; 
+}
+
+.text{
+    width: 90%;
+    font-family: "Pontano Sans", sans-serif;
+    font-size:  17px;
+    line-height: 28px;
+    text-align: justify;
+}
+
+
+

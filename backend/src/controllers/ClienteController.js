@@ -50,7 +50,7 @@ module.exports = {
                     nome,
                     senha,
                 });
-                return response.status(201).send("Seu cadastro foi realizado com sucesso!");
+                return response.status(201).send({sucess: "Seu cadastro foi realizado com sucesso!"});
             }catch(err){
                 throw "Erro no cadastro: seu CPF já consta na base de dados.";
             }

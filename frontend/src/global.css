@@ -1,13 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Pontano+Sans&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --background: rgb(232,232,232);
+    --container-background: rgb(253, 252, 252);
+    --white: #FFF;
+    --green: #649F06;
+    --red: #F00;
+    --green-button: #408618;
+    --menu-background: #f3f3f3;
+}
 
-textarea:focus, input:focus, select:focus  {
+
+ textarea:focus, input:focus, select:focus  {
     box-shadow: 0 0 0 0;
     border: 1px solid rgba(0, 0, 0, 0.356);
     outline: 0;
@@ -17,13 +24,28 @@ textarea:focus, input:focus, select:focus  {
 body{
     -webkit-font-smoothing: antialiased;
     font: 400 14px 'Roboto' sans-serif;
+    background-color: var(--background);
 }
 
 button{
     cursor: pointer;
+    border: none;
+    
+}
+
+button:focus{
+    outline: none;
+}
+
+form{
+    width: 320px;   
+    display: flex;
+    flex-direction: column;
 }
 
 form input{
+    resize: vertical;
+    min-height: 50px;
     height: 50px;
     margin-bottom: 20px;
     background-color: #F6F6F6;
@@ -36,7 +58,23 @@ form input{
 
 }
 
+form textarea{
+    background-color: #F6F6F6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 13px;
+    transition: background-color  0.2s border 0.5s;
+    resize: vertical;
+    min-height: 50px;
+    height: 50px;
+}
+
+
 form input:hover{
     background-color: #ededed;
 }
 
+form textarea:hover{
+    background-color: #ededed;
+}

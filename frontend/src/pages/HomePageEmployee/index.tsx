@@ -1,56 +1,60 @@
 import React from 'react';
 import Header from '../../components/Header/employee';
+import Footer from '../../components/Footer';
 import {Link} from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
-import './styles.css';
-
+import Warning from '../../assets/aviso.svg';
+import styles from './styles.module.css';
 const HomePageEmployee: React.FC = () => {
     return(
         <>
+
+        
             <Header/>
-            <h1 className="title">Página do funcionário</h1>
-            <section className="orders-section">
+            <img src={Warning} alt="AVISO" className={styles.warning}/>
+            <section className={styles.ordersSection}>
 
-                <div className="order-summary">
-                    <div className="order-info">
-                        <h2 className="order-number">Pedido 01</h2>
+                <div className={styles.orderSummary}>
+                    <div className={styles.orderInfo}>
+                        <h2 className={styles.orderNumber}>Pedido 01</h2>
                         <p>138.170.704-11</p>
                     </div>
-                    <div className="order-status">
+                    <div className={styles.orderStatus}>
                         em andamento
                     </div>
-                    <div className="finish-order-button">
+                    <div>
                         <Link to={'/'}><FaCheck/></Link>
                     </div>
                 </div>
-
-                <div className="order-summary">
-                    <div className="order-info">
-                        <h2 className="order-number">Pedido 02</h2>
+                <div className={styles.orderSummary}>
+                    <div className={styles.orderInfo}>
+                        <h2 className={styles.orderNumber}>Pedido 02</h2>
                         <p>138.170.704-11</p>
                     </div>
-                    <div className="order-status">
+                    <div className={styles.orderStatus}>
                         em andamento
                     </div>
-                    <div className="finish-order-button">
-                        <Link to={'/'}><FaCheck/></Link>
-                    </div>   
-                </div>
-
-                <div className="order-summary">
-                    <div className="order-info">
-                        <h2 className="order-number">Pedido 03</h2>
-                        <p>138.170.704-11</p>
-                    </div>
-                    <div className="order-status">
-                        em andamento
-                    </div>
-                    <div className="finish-order-button">
+                    <div>
                         <Link to={'/'}><FaCheck/></Link>
                     </div>
                 </div>
+                <div className={styles.orderSummary}>
+                    <div className={styles.orderInfo}>
+                        <h2 className={styles.orderNumber}>Pedido 03</h2>
+                        <p>138.170.704-11</p>
+                    </div>
+                    <div className={styles.orderStatus}>
+                        em andamento
+                    </div>
+                    <div>
+                        <Link to={'/'}><FaCheck/></Link>
+                    </div>
+                </div>
+                
 
             </section>
+
+            <Footer/>   
         </>
     );
 }

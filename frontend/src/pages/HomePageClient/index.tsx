@@ -4,18 +4,18 @@ import Carousel from '../../components/Carousel';
 import Header from '../../components/Header/client';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import styles from './styles.module.css';
 /*import '@fortawesome/fontawesome-free/css/all.min.css';*/       
 const HomePageClient: React.FC = () => {
 
     return(
         <>
             <Header/>
-            <section className="carousel-section">
+            <section className={styles.carouselSection}>
                 <Carousel/>
             </section>
-            <section className="savory-section">
-                <div className="savory-content">
+            <section className={styles.savorySection}>
+                <div className={styles.savoryContent}>
                     <h1>O que nós servimos?</h1>
                     <p>Nós, que fazemos parte da  equipe do IFood, temos um rígido protocolo de alimentação
                        a ser seguido.
@@ -24,9 +24,9 @@ const HomePageClient: React.FC = () => {
                        <p>Além disso, nossos alimentos são totalmente saudavéis, não servimos fritura, nem qualquer 
                        produto que prejudique sua saúde.</p>
                     </p>
-                    <div className="button-menu">
+                    <div className={styles.buttonMenu}>
                         <p>Para saber mais:</p>
-                        <div className="button">
+                        <div className={styles.button}>
                             <Link to={'/'}>Veja nosso cardápio</Link>
                         </div>
                     </div>

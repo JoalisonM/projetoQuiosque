@@ -1,0 +1,384 @@
+.headers{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    height: auto;
+    z-index: 5;
+   
+} 
+.header1{
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #000000;
+    height: 40px;
+}
+
+.leftSide{
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    width: 33.3%;
+
+}
+
+.leftSide ul{
+    display: flex;
+    padding: 6px 0;
+    align-items: center;
+    justify-content: center;
+}
+.leftSide ul li{
+    list-style-type: none;    
+    padding: 0 10px;
+    
+}
+
+.leftSide ul li ~ li{
+    border-left: 1px solid #ffffff;
+} 
+
+
+.leftSide ul li a{
+    text-decoration: none;
+    color: #FFF;
+    font-family: 'Camaratan', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.center{
+    display: flex;
+    width: 33.3%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.center p{
+    color: #FFF;
+    font-family: 'Camaratan', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.rightSide{
+    display: flex;
+    padding: 0 20px;
+    width: 33.3%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+ .rightSide ul{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 100%; 
+    display: inline-block;
+    padding: 6px 0;
+    align-items: center;
+}
+
+.rightSide ul li {
+    height: 100%;
+    display: flex;
+    list-style-type: none;
+    width: auto;
+}
+
+.user{
+    height: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #FFF;
+    font-family: 'Camaratan', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-transform: capitalize;
+    justify-content: center;
+    align-items: center;
+}
+
+.userIcon{  
+    display: block;
+    position: relative;
+    transition: 0.4s;
+}
+
+.rightSide:hover .userIcon{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);   
+    margin-right: 110px;
+    transition: 0.4s;
+}
+
+.rightSide:hover .userName{
+    color: var(--white);
+    margin-right: 10px;
+    
+}
+
+.rightSide ul li a:hover .chevronDown{
+    color: var(--white);
+}
+
+.hasSubMenu .subMenu{
+    display: none;
+
+    position: absolute;
+    margin-top: 28px;
+    width: 158px;
+    height: 50px;
+}
+
+.subMenu li{
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.3s;
+}
+
+.subMenu li a{
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+}
+
+.logoutButton{
+    background-color: var(--white);
+    height: 30px;
+    align-items: flex-start;
+}
+
+.hasSubMenu:hover .subMenu{
+    display: block;
+}
+
+.subMenu:hover .userIcon{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);   
+    margin-right: 110px;
+    transition: 0.4s;
+}
+
+.subMenu:hover .userName{
+    color: var(--white);
+    margin-right: 10px;
+    
+}
+
+.subMenu:hover .chevronDown{
+    color: var(--white);
+}
+
+
+.subMenu li:hover{
+    filter: brightness(90%);
+}
+
+
+.chevronDown{
+    color: #000;
+    transition: color 0.2s;
+} 
+
+.userName{
+    position: absolute;
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #0000;
+    font-size: 12px;
+    font-family: 'Camaratan', Arial, Helvetica, sans-serif;
+    transition:0.3s;
+}
+
+
+.header2{
+    width: 100%;
+    height: 73px;
+    display: flex;
+    background: -webkit-linear-gradient(90deg, hsla(120, 95%, 29%, 1) 0%, hsla(120, 72%, 28%, 1) 100%);
+    align-items: center;
+    padding: 0 50px;
+    
+ 
+}
+
+.logo{
+    max-width: 200px;
+}
+
+.logo img{
+    max-width: 150px;
+}
+
+.headerMenu{
+    width: 900px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menuOptions{
+    display: flex;
+    width: 100%;
+    margin-left: 10%;
+    padding: auto 20px;
+}
+
+.options{
+    list-style-type: none;
+    padding: 15px;
+}
+
+.optionsEmployee{
+    list-style-type: none;
+    padding: 15px;
+}
+
+
+.options ~ .options{
+     border-left:  solid 0.5px #FFF;
+ }
+
+ .optionsEmployee ~ .optionsEmployee{
+    border-left:  solid 0.5px #FFF;
+ }
+
+
+.options a{
+    position: relative;
+    text-decoration: none;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #FFF;
+}
+
+.optionsEmployee a{
+    position: relative;
+    text-decoration: none;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #FFF;
+}
+
+.options a:before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.optionsEmployee a:before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+
+.options a:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.optionsEmployee a:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+
+.bagButtonDiv{
+    width: 246px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.bagButton{
+    background-color: rgb(255, 0, 0);
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFF;
+    transition: filter 0.3s;
+   
+}
+
+.bagButtonDiv:hover .bagButton{
+    filter: brightness(110%);
+}
+
+.bagButton a{
+    color: #FFF;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px ;
+    width: 100%;
+}   
+
+
+ .logoffButtonDiv{
+    width: 246px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.logoffButton{
+    background-color: rgb(255, 0, 0);
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFF;
+    transition: filter 0.3s;
+    color: #FFF;
+    display: flex;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px ;
+}
+
+.logoffButtonDiv:hover .logoffButton{
+    filter: brightness(150%);
+}
+

@@ -8,6 +8,8 @@ function App() {
     <BrowserRouter>
     <Routes/>
     <ToastContainer/>
+    <ToastContainer/>
+    <ToastContainer/>
     </BrowserRouter>
     );
 }

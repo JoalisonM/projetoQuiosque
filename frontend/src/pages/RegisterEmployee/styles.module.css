@@ -1,0 +1,66 @@
+    .container{
+    margin: 153px auto;
+    margin-bottom: 53px;
+    height: 500px;
+    width: 1000px;
+    padding: 30px;
+
+    display: flex;
+    
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
+    background: var(--container-background);
+    border-radius: 8px;
+}
+
+.leftSide{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.leftSide form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.leftSide  form h1{
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--green);
+    width: 75px;
+    margin-bottom: 20px;
+}
+
+.leftSide form button{
+    height: 50px;
+    width: 50%;
+    align-self: flex-end;
+    background-color: var(--green-button);
+    border-radius: 4px;
+
+    font: 'Roboto', sans-serif;
+    color: var(--white);
+    font-weight: 600;
+
+    transition: filter 0.3s;
+}
+
+.leftSide form button:hover{
+    filter: brightness(110%);
+}
+
+
+.rightSide{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rightSide img{
+    margin-top: 100px;
+    width: 450px;
+}   
+
+.rightSide p{
+    font-size: 16px;
+    margin-left: 20px;
+}

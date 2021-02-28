@@ -28,7 +28,9 @@ module.exports = {
 
     async create(request, response, next) {
         try {
-            const { titulo, descricao, valor } = request.body;
+            const { titulo, descricao, valor, } = request.body;
+
+            const disponibilidade = true;
 
             const id = generateUniqueId();
 
@@ -37,28 +39,41 @@ module.exports = {
                 titulo,
                 descricao,
                 valor,
+                disponibilidade,
             });
 
-            return response.status(201).json({ sucess: 'Operation performed successfully.' });
+            return response.status(201).json({ sucess: 'Produto cadastrado com sucesso.' });
         
-        } catch (error) {
-            return next(error);
+        } catch (err) {
+            return response.status(401).json({errror: 'Algo não ocorreu bem :( . Tente novamente'});
         }
     },
 
     async update(request, response, next){
         try {
-            const body = request.body;
+            const {titulo, descricao, valor, disponibilidade} = request.body;
             const {id} = request.params;
 
+            if(disponibilidade.toLowerCase() == 'tem'){
+                const disponibilidade1 = true;
+            }else{
+                const disponibilidade1 = false;
+            }
+
             await connection('produto')
-                .update(body)
-                .where({id});
+            .where({id})
+                .update({
+                    titulo: titulo,
+                    descricao: descricao,
+                    valor: valor,
+                    disponibilidade: disponibilidade1,
+                });
+                
 
-            return response.send();
+            return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
-        } catch (error) {
-            next(error);
+        } catch (err) {
+            return response.status(401).json({ error: "Algo deu errado. Tente novamente."});
         }
     },
 

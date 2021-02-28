@@ -1,0 +1,30 @@
+p{
+    font-family: 'Roboto',sans-serif;
+    font-size: 15px;
+}
+
+.warning{
+    margin-top: 113px;
+    width: 100%;     
+}
+
+.ordersSection{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.orderSummary{
+    display: flex;
+}
+
+.orderSummary .orderInfo h2{
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.orderSummary .orderStatus{
+    text-transform: uppercase;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 600;
+}

@@ -1,37 +1,78 @@
-import React from 'react';
+import React, {useState } from 'react';
 
-import { Link } from 'react-router-dom';
-import { FaUserPlus , FaUserAlt  } from 'react-icons/fa';
-
+import { Link, useHistory } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
 import IFood from '../../assets/IFoodLogo.svg';
+import api from '../../services/api';
+import { toast, ToastContainer } from 'react-toastify';
 
+import styles from './styles.module.css';
 const EmployeeLogin: React.FC = () => {
+    const [cpf, setCpf] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const history = useHistory();
+
+    async function handeELogin(e: { preventDefault: () => void; }) {
+        e.preventDefault();
+
+        try{
+            const response = await api.post('sessions/funcionario', {cpf, senha})
+            
+            const nome = response.data.nome;
+            const primeiroNome = nome.split(' ')[0];
+
+            localStorage.setItem('SenhaFuncionario', senha);
+            localStorage.setItem('NomeFuncionario', primeiroNome);
+
+            history.push('/e/homepage');
+        }catch (err){
+
+            toast.error("Erro no Login: Dados inválidos. Tente novamente", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+         }
+    }
+
+    
+
     return(
         <>
-                <div className="content">
+            <div className={styles.content}>
             
-            <div className="container">
+            <div className={styles.container}>
             
-                <div className="image">
+                <div className={styles.image}>
                     <img src={IFood} alt="Logo IFood"/>
                 </div>
 
-                <form >
+                <form onSubmit={handeELogin}>
                     <h1>Login do Funcionário</h1>
                     <input 
                     type="text" 
                     placeholder="CPF (Somente números)"
+                    value={cpf}
+                    onChange={e => setCpf(e.target.value)}
                     />
+                    
 
                     <input 
                     type="password" 
                     placeholder="Senha"
+                    value={senha}
+                    onChange={e => setSenha(e.target.value)}
                     />
+                    
 
-                    <button className="ButtonLogin">Login</button>
-                    <div className="actions">
-                        <Link to={'/'}><FaUserAlt size={18} color={"#FF0000"}/><p>Sou um Cliente</p></Link>
-                        <Link to={'/register'}><FaUserPlus size={18} color={"#F00000"}/><p>Não possuo Login</p></Link>
+                    <button className={styles.buttonLogin}>Login</button>
+                    <div className={styles.actions}>
+                        <Link to={'/login'}><FaUserAlt size={16} color={"#FF0000"}/><p>Sou um Cliente</p></Link>
                     </div>
                 </form>
                 

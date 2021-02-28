@@ -4,8 +4,7 @@ exports.up = function(knex) {
     table.string('id').primary();
     table.string('cpf').notNullable().unique();
     table.string('nome').notNullable();
-    table.string('senha').notNullable();
-    table.string('papel').notNullable();
+    table.string('senha').notNullable();    
   });
 };
 

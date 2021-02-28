@@ -1,0 +1,71 @@
+.carouselSection{
+    margin-top: 113px;
+}
+.image-gallery{
+    margin-top: 103px;
+}
+.savorySection{
+    display: flex;
+    padding: 45px 30px;
+}
+
+.savorySection img{
+    top: 55px;
+}
+.savoryContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.savoryContent h1{
+    font-family: 'Roboto Slab', serif;
+    font-size: 50px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--red);
+    width: 490px;
+    margin-bottom: 40px;
+}
+
+.savoryContent p{
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    line-height: 0.8cm;
+}
+
+.buttonMenu {
+    margin-top: 40px;
+    margin-right: 60px;
+    align-self: flex-end;
+    display: flex;
+}
+
+.buttonMenu p  {
+    margin-right: 15px;
+    align-self: center;
+}
+
+.buttonMenu .button{
+    border: 2px solid  var(--green-button);
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    transition: background-color 0.3s;
+}
+
+.button:hover{
+    background-color: var(--green-button);
+
+}
+.button:hover a{
+    color: var(--white);
+}
+.buttonMenu a{
+    color: var(--green-button);
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Hammersmith One', sans-serif;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    
+}

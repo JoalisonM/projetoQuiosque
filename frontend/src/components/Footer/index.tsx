@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import styles from './styles.module.css';
 export default class Footer extends React.Component{
     render(){
         return(
             <footer>
-            <div className="main-footer">
-                <div className="info">
+            <div className={styles.mainFooter}>
+                <div className={styles.info}>
                     <h2>Volte sempre</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br/>
                     Facere perferendis laudantium veniam iure, aperiam cumque saepe ipsum <br/>
@@ -14,7 +14,7 @@ export default class Footer extends React.Component{
                     corporis! Necessitatibus, maxime quo!
                     </p>
                 </div>
-                <div className="links">
+                   <div className={styles.links}>
                     <h2>Links Utéis</h2>
                     <Link to={'/'}>Link 1</Link>
                     <Link to={'/'}>Link 2</Link>
@@ -23,7 +23,7 @@ export default class Footer extends React.Component{
                     <Link to={'/'}>Link 5</Link>
                 </div>    
             </div> 
-            <div className="sub-footer">
+            <div className={styles.subFooter}>
                 <p>©Todos os direitos reservados(sqn)</p>
             </div>
         </footer>
