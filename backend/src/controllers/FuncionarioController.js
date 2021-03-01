@@ -41,6 +41,10 @@ module.exports = {
             if (cpf.length < 11 || cpf.length > 11) {
                 throw  "Erro no cadastro: insira um CPF válido!";
             }
+
+            if (nome.length==0 ||senha.length==0) {
+                throw "É necessário preencher todos os campos";
+            }
             
             try{
                 await connection('funcionario').insert({
@@ -69,7 +73,7 @@ module.exports = {
                 .update(body)
                 .where({id});
 
-            return response.send();
+            return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
         } catch (error) {
             next(error);
@@ -88,7 +92,7 @@ module.exports = {
                 .where({id})
                 .del();
             
-            return response.status(204).send();
+            return response.status(201).json({sucess: "Dados deletados com sucesso."});
 
         } catch (error) {
             next(error);

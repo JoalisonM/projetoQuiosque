@@ -28,7 +28,7 @@ module.exports = {
 
     async create(request, response, next) {
         try {
-            const { titulo, descricao, valor, } = request.body;
+            const { titulo, descricao, valor} = request.body;
 
             const disponibilidade = true;
 
@@ -45,13 +45,13 @@ module.exports = {
             return response.status(201).json({ sucess: 'Produto cadastrado com sucesso.' });
         
         } catch (err) {
-            return response.status(401).json({errror: 'Algo não ocorreu bem :( . Tente novamente'});
+            return response.status(401).json({error: 'Algo não ocorreu bem :( . Tente novamente'});
         }
     },
 
     async update(request, response, next){
         try {
-            const {titulo, descricao, valor, disponibilidade} = request.body;
+            const body = request.body;
             const {id} = request.params;
 
             if(disponibilidade.toLowerCase() == 'tem'){
@@ -61,19 +61,13 @@ module.exports = {
             }
 
             await connection('produto')
-            .where({id})
-                .update({
-                    titulo: titulo,
-                    descricao: descricao,
-                    valor: valor,
-                    disponibilidade: disponibilidade1,
-                });
+                .update(body)
+                .where({id});
                 
-
             return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
-        } catch (err) {
-            return response.status(401).json({ error: "Algo deu errado. Tente novamente."});
+        } catch (error) {
+            next(erorr);
         }
     },
 
@@ -85,7 +79,7 @@ module.exports = {
                 .where({id})
                 .del();
 
-            return response.send();
+            return response.status(201).json({sucess: "Dados deletados com sucesso."});
 
         } catch (error) {
             next(error);

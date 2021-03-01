@@ -31,8 +31,6 @@ module.exports = {
             const {cpf, nome, senha} = request.body;
             const id = generateUniqueId();
             
-
-            
             const verification = isNaN(cpf);
                 
             if(verification){
@@ -41,6 +39,10 @@ module.exports = {
             
             if (cpf.length < 11 || cpf.length > 11) {
                 throw  "Erro no cadastro: insira um CPF válido!";
+            }
+
+            if (nome.length==0 ||senha.length==0) {
+                throw "É necessário preencher todos os campos";
             }
             
             try{
@@ -70,7 +72,7 @@ module.exports = {
                 .update(body)
                 .where({id});
 
-            return response.send();
+            return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
         } catch (error) {
             next(error);
@@ -85,7 +87,7 @@ module.exports = {
                 .where({id})
                 .del();
 
-            return response.send();
+            return response.status(201).json({sucess: "Dados deletados com sucesso."});
 
         } catch (error) {
             next(error);

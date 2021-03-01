@@ -39,7 +39,7 @@ module.exports = {
                 qtd,
             });
 
-            return response.status(201).json({ sucess: 'Operation performed successfully.' });
+            return response.status(204).json({ sucess: 'Operation performed successfully.' });
         
         } catch (error) {
             return next(error);
