@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import swal from 'sweetalert';
 import Header from '../../components/Header/employee';
 import Footer from  '../../components/Footer';
 
@@ -15,8 +15,20 @@ const RegisterEmployee: React.FC = () => {
     const [cpf, setCpf] = useState('');
     const [nome, setNome] = useState('');
     const [senha, setSenha] = useState('');
-
+    const isLogged = localStorage.getItem('EstaLogadoF');
     const history = useHistory();
+
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/e/login');
+        }
+    },  []);
 
     function redirect (){
         setTimeout(() => { history.push('/e/homepage')})

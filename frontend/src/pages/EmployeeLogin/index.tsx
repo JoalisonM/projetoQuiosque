@@ -8,6 +8,9 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import styles from './styles.module.css';
 const EmployeeLogin: React.FC = () => {
+
+    localStorage.clear();
+    
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -24,6 +27,7 @@ const EmployeeLogin: React.FC = () => {
 
             localStorage.setItem('SenhaFuncionario', senha);
             localStorage.setItem('NomeFuncionario', primeiroNome);
+            localStorage.setItem('EstaLogadoF', 'true');
 
             history.push('/e/homepage');
         }catch (err){

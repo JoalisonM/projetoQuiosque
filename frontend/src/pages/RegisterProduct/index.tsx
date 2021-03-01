@@ -1,4 +1,5 @@
-import  React, {useState} from 'react';
+import  React, {useState, useEffect} from 'react';
+import swal from 'sweetalert';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './styles.module.css';
 import { toast } from 'react-toastify';
@@ -12,8 +13,21 @@ const RegisterProduct: React.FC = () => {
     const [ titulo, setTitulo ] = useState('');
     const [ descricao, setDescricao ] = useState('');
     const [ valor , setValor ] = useState('');
-    
     const history = useHistory();
+    const isLogged = localStorage.getItem('EstaLogadoC');
+
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/e/login');
+        }
+    },  []);
+    
     
     function redirect(){
         setTimeout(function(){ history.push('/e/homepage'); }, 3000);

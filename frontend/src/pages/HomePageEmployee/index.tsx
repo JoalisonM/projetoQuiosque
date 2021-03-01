@@ -1,12 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import swal from 'sweetalert';
 import Header from '../../components/Header/employee';
 import Footer from '../../components/Footer';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 import Warning from '../../assets/aviso.svg';
 import styles from './styles.module.css';
 const HomePageEmployee: React.FC = () => {
+    
+    const history = useHistory();
+    const isLogged = localStorage.getItem('EstaLogadoF');
+
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/e/login');
+        }
+    },  []);
+
     return(
+
         <>
 
         

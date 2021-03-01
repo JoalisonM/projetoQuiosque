@@ -1,8 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import swal from 'sweetalert';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header/client';
 import styles from './styles.module.css';
+import { Link, useHistory } from'react-router-dom';
 const MakeOrder: React.FC = () => {
+
+    const history = useHistory();
+    const isLogged = localStorage.getItem('EstaLogadoC');
+
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/login');
+        }
+    },  []);
     return(
         <>
             <Header/>

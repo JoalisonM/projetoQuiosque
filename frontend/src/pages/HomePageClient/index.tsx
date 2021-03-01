@@ -1,13 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import swal from 'sweetalert';
 import Savory from  '../../assets/Savory.png';
 import Carousel from '../../components/Carousel';
 import Header from '../../components/Header/client';
 import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styles from './styles.module.css';
 /*import '@fortawesome/fontawesome-free/css/all.min.css';*/       
 const HomePageClient: React.FC = () => {
+    
+    const history = useHistory();
+    const isLogged = localStorage.getItem('EstaLogadoC');
 
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/login');
+        }
+    },  []);
     return(
         <>
             <Header/>

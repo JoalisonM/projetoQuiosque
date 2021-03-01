@@ -9,6 +9,7 @@ import api from '../../services/api';
 
 
 const Login: React.FC = () => {
+    localStorage.clear();
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -23,6 +24,7 @@ const Login: React.FC = () => {
             const primeiroNome = nome.split(' ')[0];
             localStorage.setItem('IdCliente', response.data.id);
             localStorage.setItem('NomeCliente', primeiroNome);
+            localStorage.setItem('EstaLogadoC', 'true');
 
             history.push('/homepage');
         }catch (err){
