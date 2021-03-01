@@ -34,18 +34,35 @@ module.exports = {
 
             const id = generateUniqueId();
 
-            await connection('produto').insert({
-                id,
-                titulo,
-                descricao,
-                valor,
-                disponibilidade,
-            });
+            if(titulo.length == 0){
+              throw  "O título não podem ficar vazio!";
+            }
 
-            return response.status(201).json({ sucess: 'Produto cadastrado com sucesso.' });
+            if(descricao.length < 15){
+                throw "Digite uma descrição com pelo menos 15 caracteres";
+            }
+
+            if(valor.length == 0){
+                throw "Digite um valor válido!"
+            }
+
+            try{
+                await connection('produto').insert({
+                    id,
+                    titulo,
+                    descricao,
+                    valor,
+                    disponibilidade,
+                });
+    
+                return response.status(201).json({ sucess: 'Produto cadastrado com sucesso.' });
+            }
+            catch(err){
+                throw 'Algo não ocorreu bem :( . Tente novamente';
+            }
         
         } catch (err) {
-            return response.status(401).json({error: 'Algo não ocorreu bem :( . Tente novamente'});
+            return response.status(401).send(err);
         }
     },
 
