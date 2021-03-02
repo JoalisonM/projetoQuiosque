@@ -94,7 +94,7 @@ module.exports = {
             return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
         } catch (error) {
-            next(erorr);
+            next(error);
         }
     },
 
