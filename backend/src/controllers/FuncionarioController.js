@@ -33,18 +33,22 @@ module.exports = {
 
             
             const verification = isNaN(cpf);
-                
-            if(verification){
-                throw  "Erro de cadastro: seu CPF deve conter apenas números.";
+            
+            
+            if (nome.length==0 ||senha.length==0||cpf.length==0) {
+                throw "É necessário preencher todos os campos";
             }
+
             
             if (cpf.length < 11 || cpf.length > 11) {
                 throw  "Erro no cadastro: insira um CPF válido!";
             }
 
-            if (nome.length==0 ||senha.length==0) {
-                throw "É necessário preencher todos os campos";
+            
+            if(verification){
+                throw  "Erro de cadastro: seu CPF deve conter apenas números.";
             }
+            
             
             try{
                 await connection('funcionario').insert({
