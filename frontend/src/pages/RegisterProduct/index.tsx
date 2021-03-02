@@ -59,7 +59,7 @@ const RegisterProduct: React.FC = () => {
 
             redirect();
         }catch(err){
-            toast.error(`${err.response.data.error}`, {
+            toast.error(`${err.response.data}`, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
