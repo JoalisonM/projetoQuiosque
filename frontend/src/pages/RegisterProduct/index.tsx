@@ -14,7 +14,7 @@ const RegisterProduct: React.FC = () => {
     const [ descricao, setDescricao ] = useState('');
     const [ valor , setValor ] = useState('');
     const history = useHistory();
-    const isLogged = localStorage.getItem('EstaLogadoC');
+    const isLogged = localStorage.getItem('EstaLogadoF');
 
     useEffect(() => {
         if(isLogged != 'true'){

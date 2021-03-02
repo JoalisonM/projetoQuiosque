@@ -36,7 +36,7 @@ module.exports = {
             
             
             if (nome.length==0 ||senha.length==0||cpf.length==0) {
-                throw "É necessário preencher todos os campos";
+                throw "Todos os campos devem ser preenchidos!";
             }
 
             

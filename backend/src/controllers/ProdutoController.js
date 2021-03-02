@@ -34,8 +34,12 @@ module.exports = {
 
             const id = generateUniqueId();
 
+            if(titulo.length == 0 || descricao.length == 0 || valor.length == 0){
+                throw "Todos os campos devem ser preenchidos!";
+            }
+
             if(titulo.length == 0){
-              throw  "O título não podem ficar vazio!";
+              throw  "O título não pode ficar vazio!";
             }
 
             if(descricao.length < 15){
@@ -56,10 +60,10 @@ module.exports = {
                 });
     
                 return response.status(201).json({ sucess: 'Produto cadastrado com sucesso.' });
+            }catch(err){
+                throw "Erro no cadastro: seu produto já consta na base de dados.";
             }
-            catch(err){
-                throw 'Algo não ocorreu bem :( . Tente novamente';
-            }
+
         
         } catch (err) {
             return response.status(401).send(err);
