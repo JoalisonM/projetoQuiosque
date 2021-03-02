@@ -23,13 +23,13 @@ const Login: React.FC = () => {
             const nome = response.data.nome;
             const primeiroNome = nome.split(' ')[0];
             localStorage.setItem('IdCliente', response.data.id);
-            localStorage.setItem('NomeCliente', primeiroNome);
+            localStorage.setItem('NomeCliente', primeiroNome.toLowerCase());
             localStorage.setItem('EstaLogadoC', 'true');
 
             history.push('/homepage');
         }catch (err){
 
-            toast.error("Erro no Login: Dados inválidos. Tente novamente", {
+            toast.error( `${err.response.data}` , {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,

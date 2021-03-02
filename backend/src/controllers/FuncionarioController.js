@@ -30,16 +30,29 @@ module.exports = {
             const {cpf, nome, senha} = request.body;
             const id = generateUniqueId();
             
-
-            
             const verification = isNaN(cpf);
             
-            
-            if (nome.length==0 ||senha.length==0||cpf.length==0) {
+
+            if (nome.length==0 && senha.length==0 && cpf.length ==0) {
                 throw "Todos os campos devem ser preenchidos!";
             }
 
-            
+
+            if(nome.length==0){
+                throw "Preencha o campo 'Nome'.";
+            }
+
+
+            if(senha==0){
+
+                throw "Preencha o campo 'Senha'.";
+            }
+
+            if(cpf==0){
+                throw "Preencha o campo 'CPF'.";
+            }
+
+
             if (cpf.length < 11 || cpf.length > 11) {
                 throw  "Erro no cadastro: insira um CPF válido!";
             }
@@ -48,8 +61,7 @@ module.exports = {
             if(verification){
                 throw  "Erro de cadastro: seu CPF deve conter apenas números.";
             }
-            
-            
+                        
             try{
                 await connection('funcionario').insert({
                     id,
@@ -57,14 +69,21 @@ module.exports = {
                     nome,
                     senha,
                 });
-                return response.status(201).json({sucess: "Seu cadastro foi realizado com sucesso!"});
+
+
+                return response.status(201).send({sucess: "Seu cadastro foi realizado com sucesso!"});
+            
+            
             }catch(err){
+             
                 throw "Erro no cadastro: seu CPF já consta na base de dados.";
+            
             }
         }catch(err){
+            
             return response.status(400).send(err);
+        
         }   
-
 
     },
 

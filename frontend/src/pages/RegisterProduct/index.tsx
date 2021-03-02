@@ -40,8 +40,8 @@ const RegisterProduct: React.FC = () => {
         
 
         const data ={
-            titulo,
-            descricao,
+            titulo: titulo.toLocaleLowerCase(),
+            descricao: descricao.toLocaleLowerCase(),
             valor,
         }
 

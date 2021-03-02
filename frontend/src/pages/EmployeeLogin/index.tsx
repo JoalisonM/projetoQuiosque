@@ -26,13 +26,13 @@ const EmployeeLogin: React.FC = () => {
             const primeiroNome = nome.split(' ')[0];
 
             localStorage.setItem('SenhaFuncionario', senha);
-            localStorage.setItem('NomeFuncionario', primeiroNome);
+            localStorage.setItem('NomeFuncionario', primeiroNome.toLowerCase());
             localStorage.setItem('EstaLogadoF', 'true');
 
             history.push('/e/homepage');
         }catch (err){
 
-            toast.error("Erro no Login: Dados inválidos. Tente novamente", {
+            toast.error(`${err.response.data}`, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,

@@ -47,8 +47,14 @@ module.exports = {
             }
 
             if(valor.length == 0){
-                throw "Digite um valor válido!"
+                throw "Digite um valor válido!";
             }
+
+            if(valor < 0){
+                throw "O valor tem que ser positivo !";
+            }
+
+
 
             try{
                 await connection('produto').insert({
