@@ -81,12 +81,6 @@ module.exports = {
             const body = request.body;
             const {id} = request.params;
 
-            if(disponibilidade.toLowerCase() == 'tem'){
-                const disponibilidade1 = true;
-            }else{
-                const disponibilidade1 = false;
-            }
-
             await connection('produto')
                 .update(body)
                 .where({id});
