@@ -25,7 +25,7 @@ const EmployeeLogin: React.FC = () => {
             const nome = response.data.nome;
             const primeiroNome = nome.split(' ')[0];
 
-            localStorage.setItem('SenhaFuncionario', senha);
+            localStorage.setItem('IdFuncionario', response.data.id);
             localStorage.setItem('NomeFuncionario', primeiroNome.toLowerCase());
             localStorage.setItem('EstaLogadoF', 'true');
 

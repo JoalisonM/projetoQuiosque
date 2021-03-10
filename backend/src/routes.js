@@ -23,6 +23,7 @@ routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
 
 routes.get('/produto', ProdutoController.list);
+routes.get('/produto/:id', ProdutoController.getById);
 routes.post('/produto', ProdutoController.create);
 routes.put('/produto/:id', ProdutoController.update);
 routes.delete('/produto/:id', ProdutoController.delete);

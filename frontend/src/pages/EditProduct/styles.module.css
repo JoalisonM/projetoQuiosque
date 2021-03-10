@@ -55,9 +55,9 @@
 .rightSideRegisterProduct form textarea{
     max-height: 150px;
     padding-left: 10px;
+    padding-right: 10px;
     padding-top: 15px;
     margin-bottom: 20px;
-    padding-right: 10px;
     font-size: 14px;
 }
 
@@ -88,6 +88,7 @@
     font-family: 'Roboto',sans-serif;
     font-size: 13px;
     color: #929292;
+    margin-bottom: 10px;
 }
 
 .valueRadioDiv .disponibilityOptions{
@@ -109,12 +110,17 @@
 .disponibilityOptions:after{
     content: "";
     clear: both;
+    
 }
 
 .disponibilityOption input[type=radio]{
     position: absolute;
-    z-index: -1;
+    z-index: 15;
     opacity: 0;
+}
+
+#have, #dnhave{
+    cursor: pointer;
 }
 
 .disponibilityOption label{
@@ -123,15 +129,17 @@
     font-size: 14px;
 }
 
-.disponibilityOption #l-have{
+
+
+ #lHave{
     color: #78c005;
 
 }
-.disponibilityOption #l-dnhave{
+
+#lDnhave{
     color: var(--red);
     
 }
-
 
 .disponibilityOption input[type=radio] + label{
     position: relative;
@@ -232,7 +240,7 @@ label:hover:before  {
 
 
 .finishButtonDiv{
-    margin-top: 40px;
+    margin-top: 60px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -244,12 +252,17 @@ label:hover:before  {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: var(--white);
-    background-color: var(--green-button);
+    background-color: var(--green);
     border-radius: 4px;
     font-size: 14px;
-
 }
 
-.finishButtonDiv:hover{
+#thiss{
+    position: relative;
+    background-color: rgb(255, 17, 17);
+    margin-right: 250px;
+    bottom: 107px;
+}
+.finishButtonDiv button:hover{
     filter: brightness(110%)
 }

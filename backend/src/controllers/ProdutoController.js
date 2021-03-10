@@ -2,6 +2,17 @@ const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 
 module.exports = {
+    async getById(request, response){
+
+
+        const { id } = request.params;
+    
+        const produto = await connection('produto')
+        .select('*')
+        .where({id})
+    
+        return response.status(200).json(produto);
+    },
 
     async list(request, response){
         const { page = 1, pageSize = 5 } = request.query;
@@ -29,8 +40,8 @@ module.exports = {
     async create(request, response, next) {
         try {
             const { titulo, descricao, valor} = request.body;
-
-            const disponibilidade = true;
+            
+            const disponibilidade = 'Tem'
 
             const id = generateUniqueId();
 
@@ -78,17 +89,60 @@ module.exports = {
 
     async update(request, response, next){
         try {
-            const body = request.body;
+            
             const {id} = request.params;
+            const { titulo, descricao, valor, disponibilidade} = request.body;
+            
+            if(titulo.length == 0 && descricao.length == 0 && valor.length == 0){
+                throw "Todos os campos devem ser preenchidos!";
+                 
+            }
+               
+            if(titulo.length == 0){
+              
+                throw  "O título não pode ficar vazio!";
+              
+            }
 
-            await connection('produto')
-                .update(body)
-                .where({id});
+            if(descricao.length < 15){
                 
-            return response.status(201).json({sucess: "Dados alterados com sucesso."});
+                throw "Digite uma descrição com pelo menos 15 caracteres";
+            }
 
-        } catch (error) {
-            next(error);
+            if(valor.length == 0){
+                throw "Digite um valor válido!";
+            }
+
+            if(valor < 0){
+                throw "O valor tem que ser positivo !";
+            }
+
+
+            try{
+             const produto = await connection('produto')
+                .where({id})
+                .select('*');
+                if(produto.length == 0){
+                    throw "O id fornecido não pertence a nenhum produto cadastrado."; 
+                }
+
+                await connection('produto')
+                .update({
+                    titulo: titulo,
+                    descricao: descricao,
+                    valor: valor,
+                    disponibilidade: disponibilidade
+                })
+                .where({id});
+                return response.status(201).json({sucess: "Dados alterados com sucesso."});
+            }catch(err){
+
+                throw err;
+            }                
+            
+
+        } catch (err) {
+            return response.status(400).send(err);
         }
     },
 
@@ -96,14 +150,28 @@ module.exports = {
         try {
             const {id} = request.params;
 
-            await connection('produto')
+            try{
+                const produto = await connection('produto')
+                .where({id})
+                .select('*');
+                if(produto.length == 0){
+                    throw "O id fornecido não pertence a nenhum produto cadastrado."; 
+                }
+                
+                await connection('produto')
                 .where({id})
                 .del();
 
-            return response.status(201).json({sucess: "Dados deletados com sucesso."});
+
+                return response.status(201).json({sucess: "Produto deletado com sucesso."});
+
+            }catch(err){
+               throw err;
+            }
+
 
         } catch (error) {
-            next(error);
+            return response.status(401).send(error);
         }
     }
 

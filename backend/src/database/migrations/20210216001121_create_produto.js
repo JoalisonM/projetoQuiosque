@@ -5,7 +5,7 @@ exports.up = function(knex) {
       table.string('titulo').notNullable().unique();
       table.string('descricao').notNullable();
       table.float('valor').notNullable();
-      table.boolean('disponibilidade').notNullable();
+      table.string('disponibilidade').notNullable();
     });
   };
   

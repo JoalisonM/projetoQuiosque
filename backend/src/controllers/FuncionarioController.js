@@ -99,7 +99,7 @@ module.exports = {
             return response.status(201).json({sucess: "Dados alterados com sucesso."});
 
         } catch (error) {
-            next(error);
+            return response.status(400).json({error: "Erro ao deletar funcionário."});
         }
     },
 

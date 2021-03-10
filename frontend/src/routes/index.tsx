@@ -9,19 +9,23 @@ import LoginEmployee from '../pages/EmployeeLogin';
 import HomePageEmployee from '../pages/HomePageEmployee';
 import RegisterProduct from '../pages/RegisterProduct';
 import RegisterEmployee from '../pages/RegisterEmployee';
+import EmployeeMenu from '../pages/EmployeeMenu';
+import EditProduct from '../pages/EditProduct';
 
 const Routes: React.FC = () => {
     return(
         <Switch>
-            <Route path="/login" exact component={LoginClient}/>
-            <Route path="/register" component={RegisterClient}/>
-            <Route path="/homepage" component={HomePageClient}/>
+            <Route path="/login" exact component={LoginClient} />
+            <Route path="/register" component={RegisterClient} />
+            <Route path="/homepage" component={HomePageClient} />
             <Route path="/morder" component={MakeOrder}/>
 
-            <Route path="/e/login" exact component={LoginEmployee}/>
-            <Route path="/e/register" component={RegisterEmployee}/>
-            <Route path="/e/homepage" component={HomePageEmployee}/>
-            <Route path="/product" component={RegisterProduct}/>
+            <Route path="/e/login" exact component={LoginEmployee} />
+            <Route path="/e/register" component={RegisterEmployee} />
+            <Route path="/e/homepage" component={HomePageEmployee} />
+            <Route path="/product" component={RegisterProduct} />
+            <Route path="/e/menu" component={EmployeeMenu} />
+            <Route path="/e/edit/product" component={EditProduct}/>
 
         </Switch>
     );

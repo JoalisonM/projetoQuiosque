@@ -55,7 +55,7 @@ const Header: React.FC = () => {
                     <div className={styles.headerMenu}>
                         <ul className={styles.menuOptions}>
                             <li className={styles.optionsEmployee}>
-                                <Link to={'/'}>Cardápio</Link>
+                                <Link to={'/e/menu'}>Cardápio</Link>
                             </li>
                             <li className={styles.optionsEmployee}>
                                 <Link to={'/'}>Gerenciar Pedidos</Link>
