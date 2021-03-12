@@ -21,7 +21,7 @@ const EditProduct: React.FC = () => {
     const DescricaoProduto = localStorage.getItem('DescricaoProduto');
     const ValorProduto = localStorage.getItem('ValorProduto');
     const DisponibilidadeProduto = localStorage.getItem('DisponibilidadeProduto');
-
+    
     
     useEffect(() => {
         setTitulo(TituloProduto);

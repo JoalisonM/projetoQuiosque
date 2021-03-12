@@ -7,6 +7,8 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import api from '../../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
+import swal from 'sweetalert';
+
 
 interface Product{
 
@@ -23,12 +25,32 @@ interface Product{
 const EmployeeMenu: React.FC =  () => {
 
     const[products, setProducts] = useState<Product[]>([]);
+    const[totalPages, setTotalPages] = useState(0);
+    const[limit, setLimit] = useState(9);
+    const[pages, setPages] = useState([]);
+
     const idFunc = localStorage.getItem("IdFuncionario");
+    const isLogged = localStorage.getItem('EstaLogadoF');
+
     const history = useHistory();
+    
+    useEffect(() => {
+        if(isLogged != 'true'){
+            swal({
+                text: "Você não tem permissão para acessar essa página",
+                icon: "error",
+                
+            });
+
+            history.push('/e/login');
+        }
+    },  []);
     
     const Produts = useEffect(() => {
         api.get('/produto').then(response => {
         setProducts(response.data.rows)
+        setTotalPages(response.headers['x-total-count']);
+        
         })}, 
         [idFunc]);
     
@@ -152,6 +174,7 @@ const EmployeeMenu: React.FC =  () => {
             
                 {menu}        
            
+
         </div>
         <Footer/>
         </>

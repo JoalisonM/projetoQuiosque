@@ -15,23 +15,27 @@ module.exports = {
     },
 
     async list(request, response){
-        const { page = 1, pageSize = 5 } = request.query;
+        const { page = 1} = request.query;
 
         const [count] = await connection('produto').count();
 
         const produto = await connection('produto')
-            .limit(pageSize)
-            .offset((page - 1) * pageSize)
+            .limit(9)
+            .offset((page - 1) * 9)
             .select('*');
 
         let produtos = {count: count['count(*)'], rows: produto};
 
-        response.header('X-Total-Count', count['count(*)']);
+       
 
         if (produto.length == 0){
             return response.json({mensagem: "não há produtos cadastrados no sistema"});
         }
         else{
+
+            response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+
+
             return response.json(produtos);
         }
 
