@@ -8,12 +8,13 @@ import IFoodLogoBW from '../../assets/IFoodLogo_B&W.png';
 import { Link, useHistory } from 'react-router-dom';
 
 import styles from './styles.module.css';
+import { FiPlus } from 'react-icons/fi';
 
 const Header: React.FC = () => {
     const nomeCliente = localStorage.getItem('NomeFuncionario');
     const history = useHistory();
 
-    function  hanldeLogout() {
+    function  handleLogout() {
         localStorage.clear();
 
         history.push('/e/login');
@@ -36,12 +37,24 @@ const Header: React.FC = () => {
                     </div>
                     <div className={styles.rightSide}>
                         <ul>
-                            <li className={styles.hasSubMenu}>
+                        <li className={styles.hasSubMenu}>
                                 <Link  className={styles.user }to={'/'}>
                                     <FontAwesomeIcon className={styles.userIcon} icon={faUserCircle} size={"lg"}/>
-                                    <p className={styles.userName}>Pedro</p>
+                                    <p className={styles.userName}>{nomeCliente}</p>
                                     <GoChevronDown size={12} className={styles.chevronDown}/>
                                 </Link>
+
+                                
+                                <ul className={styles.subMenu}>
+                                    <li>
+                                        <Link to={'/'}>Minhas Configurações</Link>
+                                    </li>
+
+                                    <li>
+                                        <button  onClick={handleLogout} className={styles.logoutButton}>Fazer Logout</button>
+                                    </li>
+
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -61,7 +74,7 @@ const Header: React.FC = () => {
                                 <Link to={'/'}>Gerenciar Pedidos</Link>
                             </li>
                             <li className={styles.optionsEmployee}>
-                                <Link to={'/'}>Fazer um Pedido</Link>
+                                <Link to={'/e/list'}>Gerenciar Usuários</Link>
                             </li>
                             <li className={styles.optionsEmployee}>
                                 <Link to={'/e/register'}>Cadastrar um Funcionário</Link>
@@ -73,7 +86,7 @@ const Header: React.FC = () => {
                     </div>
 
                     <div className={styles.logoffButtonDiv}>
-                            <button  onClick={hanldeLogout} className={styles.logoffButton}><IoLogOut size={30} color={"#FFF"}/> Fazer Logout</button>
+                            <Link  to={'/'} className={styles.requestButton}><FiPlus  size={25} color={"#FFF"}/> Realizar Pedido</Link>
                     </div>
                 </header>
             </section>

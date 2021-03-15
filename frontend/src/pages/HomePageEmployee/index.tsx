@@ -10,7 +10,7 @@ const HomePageEmployee: React.FC = () => {
     
     const history = useHistory();
     const isLogged = localStorage.getItem('EstaLogadoF');
-
+    
     useEffect(() => {
         if(isLogged != 'true'){
             swal({

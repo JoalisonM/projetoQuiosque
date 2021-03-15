@@ -1,0 +1,165 @@
+.container{
+    width: 98%;
+    height: 800px;
+
+    margin: 0 auto;
+    margin-top: 113px;
+
+    padding: 50px 40px;
+
+    background-color: var(--container-background);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.container h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    
+    border-bottom: 3px solid #F00;
+    
+    width: 450px;
+    
+    margin-bottom: 60px;
+}
+
+.listsSection{
+    display: flex;
+
+    
+}
+
+.left, .right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left h2, .right h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+
+    border-bottom: 2.5px solid var(--green);
+    padding-bottom: 2px;
+
+    margin-bottom: 25px;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: 1fr;
+
+    width: 70%;
+    max-height: 400px;
+
+    overflow-y: auto;
+    margin-top: 30px;
+    border: solid 1px  #29292944;
+    border-radius:  15px 0 0 15px;
+}
+
+.one{
+    border-radius: 15px;
+}
+
+.error{
+    margin-top: 200px;
+    width: 70%;
+    
+    background-color: rgba(255, 169, 169, 0.507);
+    border: 1px solid #F00;
+    border-radius: 15px;            
+
+    padding: 10px;
+}
+
+.error p{
+    color: #F00;
+    
+    width: 100%;
+
+    font-family: 'Roboto Condensed';
+    font-size: 16px;
+
+    text-align: center;
+}
+
+.client{
+
+    direction: rtl;
+}
+
+
+.client  .userInfo:first-child {
+    border-radius: 0 15px 0 0;
+}
+.userInfo:last-child{
+    border-radius:  0 0 0 0 ;
+}
+
+.userInfo:first-child{
+    border-radius: 15px 0 0 0;
+}
+
+ .unique{
+    border-radius: 15px;
+    background-color: var(--menu-background);
+
+    height: 100px;
+
+    padding: 15px;
+
+    transition: 0.3s;
+} 
+
+.userInfo{
+    background-color: var(--menu-background);
+    
+    height: 100px;
+    
+    border-bottom: 1px solid  #0c0c0c44;
+    
+    padding: 15px;
+
+    transition: 0.3s;
+}
+
+.userInfo p ~ p, .unique p ~ p:last-child{
+    margin-top: 8px;
+    color: #F00;
+
+}
+.userInfo:hover, .unique:hover{
+    border-color: #29292972;
+    filter: brightness(90%);
+}
+
+
+.userInfo div, .unique div{
+    display: flex;
+}
+
+
+.userInfo div h3, .unique div h3{
+    flex: 1;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25px;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.userInfo div button, .unique div button{
+    color:rgba(0, 0, 0, 0.378);
+    transition: color 0.3s;
+    background-color: transparent;
+}
+
+.userInfo div button:hover, .unique div button:hover{
+    color: rgba(255, 0, 0, 0.734);
+}
+
+.userInfo p, .unique p{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #444444;
+    font-size: 15px;
+}

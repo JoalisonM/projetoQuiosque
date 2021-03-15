@@ -17,7 +17,7 @@ module.exports = {
         response.header('X-Total-Count', count['count(*)']);
 
         if (cliente.length == 0){
-            return response.json({mensagem: "não há clientes cadastrados no sistema"});
+            return response.json({mensagem: "não há clientes cadastrados no sistema."});
         }
         else{
             return response.json(clientes);

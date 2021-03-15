@@ -156,6 +156,7 @@
     background-color: var(--white);
     height: 30px;
     align-items: flex-start;
+    text-decoration: none;
 }
 
 .hasSubMenu:hover .subMenu{
@@ -268,7 +269,7 @@
     text-decoration: none;
     font-family: 'Hammersmith One', sans-serif;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px;
     color: #FFF;
 }
 
@@ -364,7 +365,7 @@
     
 }
 
-.logoffButton{
+.requestButton{
     background-color: rgb(255, 0, 0);
     width: 180px;
     height: 35px;
@@ -379,6 +380,7 @@
     font-family: 'Hammersmith One', sans-serif;
     text-transform: uppercase;
     font-size: 18px ;
+    text-decoration: none;
 }
 
 .logoffButtonDiv:hover .logoffButton{
