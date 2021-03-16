@@ -1,0 +1,102 @@
+.container{
+    width: 98%;
+    height: 1000px;
+    margin: 0 auto;
+    margin-top: 113px;
+    padding: 50px 40px;
+
+    background-color: var(--container-background);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.container h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+
+    border-bottom: 3px solid #f00;
+    width: 170px;
+    padding-bottom: 4px;
+}
+
+.dataSection{
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    width: 90%;
+    border: 1px solid #616161bd;
+    border-radius: 15px;
+    padding: 60px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 80px;
+    margin-left: 20px;
+}
+
+.left  h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    margin-top: 30px;
+
+    border-bottom: 2px solid var(--green);
+
+    
+}
+
+.line{
+    
+    width: 1px;
+    height: 100%;
+    background-color: var(--green-button);
+}
+
+.right{
+    flex: 1;
+
+    margin-left: 100px;
+    padding:  0 40px;
+}
+
+.registerForm{
+    width: 100%;
+}
+
+.registerForm h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+
+    width: 270px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--green-button);
+    padding-bottom: 4px;
+}
+
+.buttons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.buttons button{
+    height: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--green-button);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: var(--white);
+    transition: 0.3s;
+}
+
+.buttons button:hover{
+    filter: brightness(110%);
+}

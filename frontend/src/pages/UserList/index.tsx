@@ -134,7 +134,7 @@ const UserList: React.FC = () => {
                         }
 
                         {clients.length == 1 &&
-                            <div className={` ${styles.list} ${styles.client} ${styles.one}` }>
+                            <div className={` ${styles.list}  ${styles.oneClient}` }>
                             {clients.map( client => (
                                 
                                     <div className={styles.unique}>
@@ -153,7 +153,7 @@ const UserList: React.FC = () => {
 
                     {clients.length > 1 &&
                         
-                        <div className={styles.list}>
+                        <div className={`${styles.list} ${styles.client}`}>
                         {clients.map( client => (
                                 <div className={styles.userInfo}>
                                     <div>

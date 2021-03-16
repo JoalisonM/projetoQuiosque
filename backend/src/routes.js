@@ -13,14 +13,17 @@ routes.post('/sessions/cliente', SessionClienteController.create);
 routes.post('/sessions/funcionario', SessionFuncionarioController.create);
 
 routes.get('/cliente', ClienteController.list);
+routes.get('/cliente/:id', ClienteController.getById);
 routes.post('/cliente', ClienteController.create);
 routes.put('/cliente/:id', ClienteController.update);
 routes.delete('/cliente/:id', ClienteController.delete);
 
 routes.get('/funcionario', FuncionarioController.list);
+routes.get('/funcionario/:id', FuncionarioController.getById);
 routes.post('/funcionario', FuncionarioController.create);
 routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
+
 
 routes.get('/produto', ProdutoController.list);
 routes.get('/produto/:id', ProdutoController.getById);

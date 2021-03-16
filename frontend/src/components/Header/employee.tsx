@@ -47,7 +47,7 @@ const Header: React.FC = () => {
                                 
                                 <ul className={styles.subMenu}>
                                     <li>
-                                        <Link to={'/'}>Minhas Configurações</Link>
+                                        <Link to={'/e/edit'}>Minhas Configurações</Link>
                                     </li>
 
                                     <li>
