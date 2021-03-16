@@ -32,10 +32,10 @@ const Routes: React.FC = () => {
             <Route path="/e/homepage" component={HomePageEmployee} />
             <Route path="/e/menu" component={EmployeeMenu} />
             <Route path="/e/list" component={UserList}/>
-            <Route path="/e/edit" component={EditEmployee}/>
+            <Route path="/e/edit" exact component={EditEmployee}/>
             
             <Route path="/product" component={RegisterProduct} />
-            <Route path="/e/edit/product" component={EditProduct}/>
+            <Route path="/e/edit/product"  component={EditProduct}/>
 
         </Switch>
     );
