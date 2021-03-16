@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.string('id_cliente').notNullable();
         table.string('id_produto').notNullable();
         table.integer('qtd').notNullable();
+        table.float('total').notNullable();
 
         table.foreign('id_cliente').references('id').inTable('cliente');
         table.foreign('id_produto').references('id').inTable('produto');
