@@ -71,8 +71,7 @@ const UserList: React.FC = () => {
             setEmployees(response.data.rows);
         }
         })
-        }, []);
-
+        }, [employees]);
 
         async function handleDeleteEmployee(id){
             try{
