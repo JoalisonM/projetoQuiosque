@@ -3,13 +3,13 @@ const connection = require('../database/connection');
 
 module.exports = {
     async list(request, response){
-        const { page = 1, pageSize = 5 } = request.query;
+        const { page = 1} = request.query;
 
         const [count] = await connection('funcionario').count();
 
         const funcionario = await connection('funcionario')
-            .limit(pageSize)
-            .offset((page - 1) * pageSize)
+            .limit(100)
+            .offset((page - 1) * 100)
             .select('*');
 
         let funcionarios = {count: count['count(*)'], rows: funcionario};
@@ -57,7 +57,6 @@ module.exports = {
                 throw  "Erro no cadastro: insira um CPF válido!";
             }
 
-            
             if(verification){
                 throw  "Erro de cadastro: seu CPF deve conter apenas números.";
             }
