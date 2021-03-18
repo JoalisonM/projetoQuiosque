@@ -6,6 +6,7 @@ const ProdutoController = require('./controllers/ProdutoController');
 const SessionClienteController = require('./controllers/SessionClienteController');
 const SessionFuncionarioController = require('./controllers/SessionFuncionarioController');
 const PedidoController = require('./controllers/PedidoController');
+const ItemPedidoController = require('./controllers/ItemPedidoController');
 
 const routes = express.Router();
 
@@ -33,6 +34,14 @@ routes.delete('/produto/:id', ProdutoController.delete);
 
 routes.get('/pedido', PedidoController.list);
 routes.post('/pedido', PedidoController.create);
-routes.delete('/pedido', PedidoController.delete);
+routes.delete('/pedido/:id', PedidoController.delete);
+routes.put('/pedido/st/:id', PedidoController.updateStatus);  
+routes.put('/pedido/p/:id_pedido', PedidoController.updatePrice);
+routes.get('/pedido/i/:id', PedidoController.listItens);
+
+routes.get('/ipedido', ItemPedidoController.list);
+routes.post('/ipedido', ItemPedidoController.create);
+routes.delete('/ipedido/:id', ItemPedidoController.delete);
+routes.put('/ipedido/:id', ItemPedidoController.updateQuant);
 
 module.exports = routes;

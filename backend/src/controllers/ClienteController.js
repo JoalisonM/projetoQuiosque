@@ -3,13 +3,13 @@ const connection = require('../database/connection');
 
 module.exports = {
     async list(request, response){
-        const { page = 1} = request.query;
+        const { page = 1, pageSize = 5 } = request.query;
 
         const [count] = await connection('cliente').count();
 
         const cliente = await connection('cliente')
-            .limit(100)
-            .offset((page - 1) * 100)
+            .limit(pageSize)
+            .offset((page - 1) * pageSize)
             .select('*');
 
         let clientes = {count: count['count(*)'], rows: cliente};
@@ -42,6 +42,7 @@ module.exports = {
             if(nome.length==0){
                 throw "Preencha o campo 'Nome'.";
             }
+
 
             if(senha==0){
 
