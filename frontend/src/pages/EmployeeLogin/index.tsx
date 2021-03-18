@@ -76,7 +76,7 @@ const EmployeeLogin: React.FC = () => {
 
                     <button className={styles.buttonLogin}>Login</button>
                     <div className={styles.actions}>
-                        <Link to={'/login'}><FaUserAlt size={16} color={"#FF0000"}/><p>Sou um Cliente</p></Link>
+                        <Link to={'/'}><FaUserAlt size={16} color={"#FF0000"}/><p>Sou um Cliente</p></Link>
                     </div>
                 </form>
                 

@@ -17,7 +17,7 @@ const Header: React.FC =  () => {
         
         localStorage.clear();
 
-        history.push('/login');
+        history.push('/');
     }
 
 
@@ -66,13 +66,7 @@ const Header: React.FC =  () => {
                     <div className={styles.headerMenu}>
                         <ul className={styles.menuOptions}>
                             <li className={styles.options}>
-                                <Link to={'/'}>Nosso Cardápio</Link>
-                            </li>
-                            <li className={styles.options}>
-                                <Link to={'/'}>Sobre o IFood</Link>
-                            </li>
-                            <li className={styles.options}>
-                                <Link to={'/'}>Meu Pedido</Link>
+                                <Link to={'/homepage'}>Sobre o IFood</Link>
                             </li>
                             <li className={styles.options}>
                                 <Link to={'/morder'}>Fazer um Pedido</Link>
@@ -82,7 +76,7 @@ const Header: React.FC =  () => {
 
                     <div className={styles.bagButtonDiv}>
                         <div className={styles.bagButton}>
-                            <Link to={'/'}><FiShoppingBag color={"#FFF"} size={25}/>Minha Sacola</Link>
+                            <Link to={'/bag'}><FiShoppingBag color={"#FFF"} size={25}/>Minha Sacola</Link>
                         </div>
                     </div>
                 </header>

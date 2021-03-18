@@ -15,7 +15,7 @@ const Register: React.FC = () => {
     const history = useHistory();
     
     function redirect(){
-        setTimeout(function(){ history.push('/login'); }, 3000);
+        setTimeout(function(){ history.push('/'); }, 3000);
     }
     
     
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
                             />
 
                             <div className={styles.buttons}>
-                                <Link to={'/login'}><FiCornerUpLeft size={18} color={"#F00"}/> <p>Já tenho Cadastro</p></Link>
+                                <Link to={'/'}><FiCornerUpLeft size={18} color={"#F00"}/> <p>Já tenho Cadastro</p></Link>
                                 <button>Concluir cadastro</button>
                             </div>
                         </form>

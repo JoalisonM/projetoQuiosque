@@ -18,9 +18,6 @@ export default class Footer extends React.Component{
                     <h2>Links Utéis</h2>
                     <Link to={'/'}>Link 1</Link>
                     <Link to={'/'}>Link 2</Link>
-                    <Link to={'/'}>Link 3</Link>
-                    <Link to={'/'}>Link 4</Link>
-                    <Link to={'/'}>Link 5</Link>
                 </div>    
             </div> 
             <div className={styles.subFooter}>

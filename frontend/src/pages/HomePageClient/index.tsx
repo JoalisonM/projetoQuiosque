@@ -11,18 +11,7 @@ const HomePageClient: React.FC = () => {
     
     const history = useHistory();
     const isLogged = localStorage.getItem('EstaLogadoC');
-
-    useEffect(() => {
-        if(isLogged != 'true'){
-            swal({
-                text: "Você não tem permissão para acessar essa página",
-                icon: "error",
-                
-            });
-
-            history.push('/login');
-        }
-    },  []);
+    
     return(
         <>
             <Header/>

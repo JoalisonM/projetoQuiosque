@@ -1,50 +1,114 @@
-import React, {useEffect} from 'react';
-import swal from 'sweetalert';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header/client';
 import styles from './styles.module.css';
-import { Link, useHistory } from'react-router-dom';
-const MakeOrder: React.FC = () => {
+import { FaHeart } from 'react-icons/fa';
+import api from '../../services/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
+import swal from 'sweetalert';
+
+
+interface Product{
+
+    id: string;
+
+    titulo: string;
+
+    descricao: string;
+
+    valor: number;
+
+    disponibilidade: string;
+}
+
+const MakeOrder: React.FC =  () => {
+
+    const[products, setProducts] = useState<Product[]>([]);
+    const[totalPages, setTotalPages] = useState(0);
+    const[limit, setLimit] = useState(9);
+    const[pages, setPages] = useState([]);
+
+    const idFunc = localStorage.getItem("IdFuncionario");
+    const isLogged = localStorage.getItem('EstaLogadoF');
 
     const history = useHistory();
-    const isLogged = localStorage.getItem('EstaLogadoC');
+    
+    const Produts = useEffect(() => {
+        api.get('/produto').then(response => {
+        setProducts(response.data.rows)
+        setTotalPages(response.headers['x-total-count']);
+        
+        })}, 
+        [idFunc]);
 
-    useEffect(() => {
-        if(isLogged != 'true'){
-            swal({
-                text: "Você não tem permissão para acessar essa página",
-                icon: "error",
-                
-            });
+    var menu;
+    if(products){
+        menu = 
+        <div className={styles.menuGrid}>   
+            {products.map(product => (
+                    
+            <div key={product.id}className={styles.product}>
+                <div className={styles.top}>
+                    <h2>{product.titulo}</h2>
+                    <div>
+                        <button><FaHeart size={25} /></button>
+                    </div>
+                </div>
+                <p className={styles.info}>
+                    {product.descricao}
+                </p>
+                <div className={styles.priceDisponibility}>
+                    
+                    <p className={styles.price}>
+                    {Intl.NumberFormat('pt-BR', {style:'currency', currency: 'BRL'}).format(product.valor)}
+                        <div></div>
+                    </p>
+                        
+                </div>
+            </div>
+       ))}
+       </div>
 
-            history.push('/login');
-        }
-    },  []);
+
+    }else{
+        menu = 
+        <div className={styles.nothing}>
+            <div className={styles.emoji}>
+                <p>:</p>
+                <p>(</p>
+            </div>
+            <p>Não há produtos cadastrados no sistema!</p>
+
+        </div>
+    }
+
+
+
+
+
     return(
         <>
-            <Header/>
-            <div className={styles.menuTitle}>
-                <h1>Escolha seus produtos</h1> 
-                <div></div>   
-            </div>
-            <div className={styles.menuGrid}>
-                <div className={styles.product}>A</div>
-                <div className={styles.product}>B</div>
-                <div className={styles.product}>C</div>
-                <div className={styles.product}>D</div>
-                <div className={styles.product}>E</div>
-                <div className={styles.product}>F</div>
-                <div className={styles.product}>G</div>
-                <div className={styles.product}>H</div>
-                <div className={styles.product}>I</div>
-                <div className={styles.product}>J</div>
-                <div className={styles.product}>K</div>
-                <div className={styles.product}>L</div>
-            </div>    
-            <Footer/>
+        <Header/>
+        <div className={styles.allContainer}>
+            <section className={styles.topSection}>
+                <div>
+                    <p className={styles.start}> Você está em: </p>
+                    <Link to={'/'}>Fazer um pedido</Link>
+                </div>
+            
+                <h1>Nossos Lanches</h1>
+            </section>
+            
+            
+                {menu}        
+           
+
+        </div>
+        <Footer/>
         </>
     );
 }
-
 
 export default MakeOrder;

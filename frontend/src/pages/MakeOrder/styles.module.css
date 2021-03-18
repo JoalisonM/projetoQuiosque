@@ -1,20 +1,231 @@
-.menuGrid{
-    width: auto;
+.allContainer{
+    width: 98%;
+    background-color: var(--container-background);
+    margin: 0 auto;
     margin-top: 113px;
-    display: grid;
-    grid-template-columns: 100px 100px 100px;
-    row-gap: 20px;
-    column-gap: 320px;
+    padding-bottom: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    height: 1000px;
+}
+
+.topSection h1{
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
     margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    align-self: center;
+    border-bottom: 3px solid #F00;
+    width: 300px;
+}
+
+.topSection div{
+    display: flex;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    margin-top: 103px;
+    padding-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.topSection div .start{
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.topSection div a{
+    text-decoration: none;
+    margin-right: 4px;
+    margin-left: 4px;
+    color: #000;
+    transition: 0.3s;
+    
+}
+
+.topSection div a:hover{
+    text-decoration: underline 1px solid #000;
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(1.08);
+}
+
+.topSection div a:last-child{
+    color: var(--green-button);
+    font-size: 16px;
+}
+
+.topSection div a:hover:last-child{
+    text-decoration: underline 1px solid var(--green-button);
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(1.08);
+}
+
+.active:hover{
+    text-decoration: underline 1px solid var(--green);
+}
+
+.menuGrid{
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
 }
 
 .product{
-    background-color: var(--menu-background);
-    padding: 20px;
-    display: flex;
-    width: 400px;
+    width: 390px;
     height: 200px;
+    padding: 25px 25px;
+    background-color: var(--menu-background);
+    border: 1px solid #29292944;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.product:hover{
+    transform: scale(1.03);
+    border-color: #29292972;
+    
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top div{
+    display: flex;
+    float: right;
+    margin-right: 0;
+}
+.top div button {
+    color: rgba(0, 0, 0, 0.378);
+    background: #f3f3f3;
+    margin-bottom: 9.6px;
+    transition: 0.3s;
+    left: 64px;
+    -moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.top div button:hover{
+    color: rgba(0, 0, 0, 0.576);
+    -moz-transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
+.top div button:last-child{
+    left: 0;
+}
+.top div button:hover:last-child{
+    color: rgba(255, 0, 0, 0.734);
+}
+
+
+.product:hover .price div{
+    width: 100%;
+}
+
+.product h2{
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    border-bottom:  2px solid var(--green) ;
+}
+
+.info{
+    margin-top: 0.8rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 70%;
+    text-align: justify;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 6px;
+    height: 64px;
+}
+
+.product div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.have{
+    color: var(--green-button);
+}
+
+.dHave{
+    color: #F00;
+}
+.price{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 25px;
+}
+
+.price div{
+    width: 0%;
+    height: 2px;
+    background-color: #F00;
+    transition: 0.5s;
+}
+
+.nothing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 160px;
+    height: 300px;
+}
+.emoji{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.emoji p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 64px;
+}
+.nothing p{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.amount {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.number {
+    width: 50px;
+    background-color: #ddd;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.botao button{
+    margin-top: 5px;
+    padding: auto;
+    color: rgba(0, 0, 0, 0.378);
+    background: #f3f3f3;
+}
+
+.botao button:last-child {
+    left: 0;
+}
+
+.botao button:hover:last-child {
+    color: rgba(255, 0, 0, 0.734);
 }

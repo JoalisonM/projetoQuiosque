@@ -71,7 +71,7 @@ const Header: React.FC = () => {
                                 <Link to={'/e/menu'}>Cardápio</Link>
                             </li>
                             <li className={styles.optionsEmployee}>
-                                <Link to={''}>Gerenciar Pedidos</Link>
+                                <Link to={'/e/manageorder'}>Gerenciar Pedidos</Link>
                             </li>
                             <li className={styles.optionsEmployee}>
                                 <Link to={'/e/list'}>Gerenciar Usuários</Link>
