@@ -9,39 +9,30 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import swal from 'sweetalert';
 
-interface ItemPedido {
+interface ItemOrder {
     id: string;
-
-    id_cliente: string;
 
     id_produto: string;
 
-    qtd: number;
+    titulo_produto: string;
 
-    total: number;
-}
-
-interface Product{
-    id: string;
-
-    titulo: string;
-
-    descricao: string;
+    quantidade: number;
 
     valor: number;
 
-    disponibilidade: string;
+    id_cliente: string;
+
+    id_pedido: string;
 }
 
 const BagClient: React.FC =  () => {
-    const[item, setItens] = useState<ItemPedido[]>([]);
-    const[products, setProducts] = useState<Product[]>([]);
+    const[itemOrders, setItemOrders] = useState<ItemOrder[]>([]);
 
     const history = useHistory();
 
-    var pedido;
-    if(products) {
-        pedido =
+    var itemPedido;
+    if(itemOrders) {
+        itemPedido =
         <div className={styles.container}>
             <div className={styles.left}>
                 <div className={styles.grid}>
@@ -84,7 +75,7 @@ const BagClient: React.FC =  () => {
         </div> 
     }
     else {
-        pedido = 
+        itemPedido = 
         <div className={styles.nothing}>
             <div className={styles.emoji}>
                 <p>:</p>
@@ -104,10 +95,10 @@ const BagClient: React.FC =  () => {
                     <Link to={'/'}>Minha Sacola</Link>
                 </div>
             
-                <h1>Minha Saloca</h1>
+                <h1>Minha Sacola</h1>
             </section>
 
-            {pedido}
+            {itemPedido}
 
         </div>
 

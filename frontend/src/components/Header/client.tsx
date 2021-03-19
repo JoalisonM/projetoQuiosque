@@ -71,6 +71,9 @@ const Header: React.FC =  () => {
                             <li className={styles.options}>
                                 <Link to={'/morder'}>Fazer um Pedido</Link>
                             </li>
+                            <li className={styles.options}>
+                                <Link to={'/myorder'}>Meu pedido</Link>
+                            </li>
                         </ul>
                     </div>
 

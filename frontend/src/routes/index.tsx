@@ -7,6 +7,7 @@ import HomePageClient from '../pages/HomePageClient';
 import UserList from '../pages/UserList';
 import MakeOrder from '../pages/MakeOrder';
 import BagClient from '../pages/BagClient';
+import MyOrder from '../pages/MyOrder';
 
 import LoginEmployee from '../pages/EmployeeLogin';
 import HomePageEmployee from '../pages/HomePageEmployee';
@@ -28,6 +29,7 @@ const Routes: React.FC = () => {
             <Route path="/morder" component={MakeOrder} />
             <Route path="/edit" component={EditClient} />
             <Route path="/bag" component={BagClient} />
+            <Route path="/myorder" component={MyOrder} />
 
 
             <Route path="/e/login" exact component={LoginEmployee} />

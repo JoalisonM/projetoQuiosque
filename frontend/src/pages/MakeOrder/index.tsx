@@ -30,7 +30,7 @@ const MakeOrder: React.FC =  () => {
     const[limit, setLimit] = useState(9);
     const[pages, setPages] = useState([]);
 
-    const idFunc = localStorage.getItem("IdFuncionario");
+    const idClient = localStorage.getItem("IdCliente");
     const isLogged = localStorage.getItem('EstaLogadoF');
 
     const history = useHistory();
@@ -41,7 +41,7 @@ const MakeOrder: React.FC =  () => {
         setTotalPages(response.headers['x-total-count']);
         
         })}, 
-        [idFunc]);
+        [idClient]);
 
     var menu;
     if(products){
