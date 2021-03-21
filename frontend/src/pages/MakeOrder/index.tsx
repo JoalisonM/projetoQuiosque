@@ -23,9 +23,22 @@ interface Product{
     disponibilidade: string;
 }
 
+interface ItemOrder {
+    id: string;
+
+    id_produto: string;
+
+    titulo_produto: string;
+
+    quantidade: number;
+
+    valor: number;
+
+}
 const MakeOrder: React.FC =  () => {
 
     const[products, setProducts] = useState<Product[]>([]);
+    const [itemOrders, setItemOrders] = useState<ItemOrder[]>([]);
     const[totalPages, setTotalPages] = useState(0);
     const[limit, setLimit] = useState(9);
     const[pages, setPages] = useState([]);
@@ -36,8 +49,14 @@ const MakeOrder: React.FC =  () => {
 
     const history = useHistory();
     
+    const Produts = useEffect(() => {
+        api.get('/produto').then(response => {
+        setProducts(response.data.rows)
+        
+        })}, 
+        [idClient]);
 
-    async function handleCreateItemRequest(id: string) {
+    async function HandleCreateItemRequest(id: string) {
         try{
             console.log({id, idClient, RequestId});
             const response = await api.post('/ipedido', {
@@ -69,12 +88,7 @@ const MakeOrder: React.FC =  () => {
             });
         }
     }
-    const Produts = useEffect(() => {
-        api.get('/produto').then(response => {
-        setProducts(response.data.rows)
-        
-        })}, 
-        [idClient]);
+    
 
     var menu;
     if(products){
@@ -86,7 +100,7 @@ const MakeOrder: React.FC =  () => {
                 <div className={styles.top}>
                     <h2>{product.titulo}</h2>
                     <div>
-                        <button onClick={() => handleCreateItemRequest(product.id)}><FaHeart size={25}/></button>
+                        <button onClick={() => HandleCreateItemRequest(product.id)}><FaHeart size={25}/></button>
                     </div>
                 </div>
                 <p className={styles.info}>
