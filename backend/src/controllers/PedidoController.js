@@ -4,20 +4,12 @@ const connection = require('../database/connection');
 module.exports = {
 
     async list(request, response){
-        const { page = 1, pageSize = 5 } = request.query;
 
-        const [count] = await connection('pedido').count();
-
-        const pedido = await connection('pedido')
-            .limit(pageSize)
-            .offset((page - 1) * pageSize)
+        const pedidos = await connection('pedido')
             .select('*');
 
-        let pedidos = {count: count['count(*)'], rows: pedido};
 
-        response.header('X-Total-Count', count['count(*)']);
-
-        if (pedido.length == 0){
+        if (pedidos.length == 0){
             return response.json({mensagem: "não foi realizado nenhum pedido no sistema"});
         }
         else{
@@ -52,7 +44,11 @@ module.exports = {
             });
 
 
-            return response.status(201).json({ message: "oioi"});
+            return response.status(201).json({ 
+            id_pedido: id,
+            id_cliente,
+            nome_cliente,
+            });
         
         } catch (error) {
             return response.status(400).json({error: "error."});

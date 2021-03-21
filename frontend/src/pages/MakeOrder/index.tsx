@@ -32,13 +32,46 @@ const MakeOrder: React.FC =  () => {
 
     const idClient = localStorage.getItem("IdCliente");
     const isLogged = localStorage.getItem('EstaLogadoF');
+    const RequestId = localStorage.getItem('IdPedido');
 
     const history = useHistory();
     
+
+    async function handleCreateItemRequest(id: string) {
+        try{
+            console.log({id, idClient, RequestId});
+            const response = await api.post('/ipedido', {
+            
+                id_produto: id,
+                id_cliente: idClient,
+                id_pedido: RequestId,
+            });
+
+            toast.success(`${response.data.sucess}`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+
+        }catch(err){
+            toast.error(`${err.response.data}`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }
     const Produts = useEffect(() => {
         api.get('/produto').then(response => {
         setProducts(response.data.rows)
-        setTotalPages(response.headers['x-total-count']);
         
         })}, 
         [idClient]);
@@ -53,7 +86,7 @@ const MakeOrder: React.FC =  () => {
                 <div className={styles.top}>
                     <h2>{product.titulo}</h2>
                     <div>
-                        <button><FaHeart size={25} /></button>
+                        <button onClick={() => handleCreateItemRequest(product.id)}><FaHeart size={25}/></button>
                     </div>
                 </div>
                 <p className={styles.info}>

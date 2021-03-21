@@ -14,42 +14,45 @@ module.exports = {
 
         return response.status(200).json({itens});
     },
+
+
     
-    //Cria um novo item
     async create(request, response){
-        const { id_cliente, id_pedido, id_produto, quantidade } = request.body;
+        try{
+            const { id_cliente, id_pedido, id_produto } = request.body;
+            //Cria um novo item
 
+            
+            const id = generateUniqueId();
+
+            
+            const buscaValor = await connection('produto')
+            .select('valor', 'titulo')
+            .where('id', id_produto);
         
-        const id = generateUniqueId();
 
+            const valor = buscaValor[0].valor;
+            
+            const titulo_produto = buscaValor[0].titulo;
+            
+            await connection('itemPedido')
+            .insert({
+                id,
+                id_produto,
+                quantidade: 1,
+                titulo_produto,
+                valor, 
+                id_cliente,
+                id_pedido,
+            });
+
+            
+            return response.status(201).json({ sucess: ` 1 ${titulo_produto} foi adcionado a sua sacola.`});
         
-        const buscaValor = await connection('produto')
-        .select('valor', 'titulo')
-        .where('id', id_produto);
+        }catch(err){
 
-
-        const valor = quantidade * buscaValor[0].valor;
-        const titulo_produto = buscaValor[0].titulo;
-        
-        await connection('itemPedido')
-        .insert({
-            id,
-            id_produto, 
-            titulo_produto,
-            quantidade,
-            valor, 
-            id_cliente,
-            id_pedido,
-        });
-
-        
-        return response.status(201).json({id: id,
-        titulo_produto: titulo_produto,
-        quantidade: quantidade,
-        valor: valor,
-        id_cliente: id_cliente,
-        id_pedido: id_pedido
-        });
+            return response.status(400).send("Erro ao selecionar produto. Tente novamente.");
+        }
     },
 
     //Atualiza a quantidade de itens e seu respectivo valor

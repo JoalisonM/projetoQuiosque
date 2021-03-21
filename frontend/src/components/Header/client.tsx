@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FiShoppingBag } from 'react-icons/fi';
@@ -7,11 +6,19 @@ import { GoChevronDown } from 'react-icons/go';
 import IFoodLogoBW from '../../assets/IFoodLogo_B&W.png';
 import { Link, useHistory } from 'react-router-dom';
 
+import   api   from '../../services/api'; 
 import  styles from './styles.module.css';
 
 const Header: React.FC =  () => {
+    const clientId = localStorage.getItem('IdCliente');
     const clientName = localStorage.getItem('NomeCliente');
     const history = useHistory();
+
+    async function handleCreateRequest(){
+        console.log("entrou");
+        const response = await api.post('/pedido', {id_cliente: clientId});
+        localStorage.setItem('IdPedido', response.data.id_pedido);
+    }
 
     function handleLogout (){
         
@@ -69,7 +76,7 @@ const Header: React.FC =  () => {
                                 <Link to={'/homepage'}>Sobre o IFood</Link>
                             </li>
                             <li className={styles.options}>
-                                <Link to={'/morder'}>Fazer um Pedido</Link>
+                                <Link to={'/morder'} onClick={handleCreateRequest}>Fazer um Pedido</Link>
                             </li>
                             <li className={styles.options}>
                                 <Link to={'/myorder'}>Meu pedido</Link>

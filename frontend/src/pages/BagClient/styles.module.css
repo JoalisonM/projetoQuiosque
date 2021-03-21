@@ -103,6 +103,7 @@
     display: flex;
     font-size: 1rem;
     font-family: 'Roboto Condensed', sans-serif;
+    margin-left: 10px;
 }
 
 .pedido {
@@ -153,6 +154,7 @@
 .quantidade button {
     background-color: var(--menu-background);
     color: #444444;
+    transition: 0.3s;
 }
 
 .quantidade button:hover {
@@ -189,15 +191,25 @@
 
 .area .finalpedido {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
 .total {
     display: flex;
-    font-size: 1rem;
+    width: 100%;
     color: #444444;
+    justify-content: space-between;
+}
+
+.total {
+    margin-bottom: 15px;
+}
+
+.total p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
 }
 
 .area button {
@@ -212,4 +224,8 @@
     font-weight: 600;
 
     transition: filter 0.3s;
+}
+
+.area button:hover{
+    filter: brightness(110%);
 }

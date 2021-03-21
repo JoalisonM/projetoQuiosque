@@ -48,9 +48,7 @@ const EmployeeMenu: React.FC =  () => {
     
     const Produts = useEffect(() => {
         api.get('/produto').then(response => {
-        setProducts(response.data.rows)
-        setTotalPages(response.headers['x-total-count']);
-        
+        setProducts(response.data.rows);
         })}, 
         [idFunc]);
     
