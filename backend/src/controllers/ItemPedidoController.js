@@ -31,23 +31,48 @@ module.exports = {
             .where('id', id_produto);
         
 
-            const valor = buscaValor[0].valor;
+            var valor_unitário = buscaValor[0].valor;
+            
             
             const titulo_produto = buscaValor[0].titulo;
             
-            await connection('itemPedido')
-            .insert({
-                id,
-                id_produto,
-                quantidade: 1,
-                titulo_produto,
-                valor, 
-                id_cliente,
-                id_pedido,
-            });
+            const quantidade = 1;
+
+            const itemIgual = await connection('itemPedido')
+            .select('quantidade')
+            .where({ id_produto, id_pedido });
+
+            if(itemIgual.length != 0){
+
+                await connection('itemPedido')
+                .where({ id_produto, id_pedido })
+                .update({ quantidade: itemIgual[0].quantidade + 1,});
+
+
+                connection('itemPedido')
+
+                return response.status(201).json({ sucess: ` + 1 ${titulo_produto} foi adcionado a sua sacola.`});
+                
+                
+            }else{
+
+                await connection('itemPedido')
+                .insert({
+                    id,
+                    id_produto,
+                    quantidade,
+                    titulo_produto,
+                    valor_unitário, 
+                    valor_total: valor_unitário * quantidade, 
+                    id_cliente,
+                    id_pedido,
+                });
+
+                
+                return response.status(201).json({ sucess: ` 1 ${titulo_produto} foi adcionado a sua sacola.`});
+            }
 
             
-            return response.status(201).json({ sucess: ` 1 ${titulo_produto} foi adcionado a sua sacola.`});
         
         }catch(err){
 
@@ -63,25 +88,20 @@ module.exports = {
         const { quantidade } = request.body;
 
         
-        const id_produto = await connection('itemPedido')
+        const item = await connection('itemPedido')
         .where({id})
-        .select('id_produto');
+        .select('*');
+
 
         
-
-        const buscaValor = await connection('produto')
-        .select('valor')
-        .where('id', id_produto[0].id_produto);
-
-        
-        const valor = quantidade * buscaValor[0].valor;
 
 
         await connection('itemPedido')
         .where({id})
         .update({
-            valor:valor,
-            quantidade: quantidade
+            valor_total:quantidade * item[0].valor_unitário,
+            quantidade: quantidade,
+            valor_unitário: item[0].valor_unitário  
         });
 
         const pedido = await connection('itemPedido')
@@ -102,7 +122,7 @@ module.exports = {
         .where({id})
         .del();
 
-        return response.status(200).json({message: "deleted"});
+        return response.status(200).json({sucess: "Item removido da sacola com sucesso."});
     },
 
 

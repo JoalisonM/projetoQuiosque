@@ -5,7 +5,8 @@ exports.up = function(knex) {
         table.string('id_produto').notNullable();
         table.string('titulo_produto').notNullable();
         table.integer('quantidade').notNullable();
-        table.float('valor').notNullable();
+        table.float('valor_total').notNullable();
+        table.float('valor_unitário').notNullable();
         table.string('id_cliente').notNullable();
         table.string('id_pedido').notNullable();
 

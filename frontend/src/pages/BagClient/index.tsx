@@ -8,6 +8,7 @@ import api from '../../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import swal from 'sweetalert';
+import { FiTrash2 } from 'react-icons/fi';
 
 interface ItemOrder {
     id: string;
@@ -16,9 +17,12 @@ interface ItemOrder {
 
     quantidade: number;
 
-    valor: number;
+    valor_unitário: number;
+
+    valor_total: number;
 
 }
+
 
 const BagClient: React.FC = () => {
     const [itemOrders, setItemOrders] = useState<ItemOrder[]>([]);
@@ -35,22 +39,51 @@ const BagClient: React.FC = () => {
         api.put(`/ipedido/${id}`, { quantidade: quantidade - 1 });
     }
 
-    const ItemOrders = useEffect(() => {
-        api.get(`/pedido/i/${requestId}`).then(response => {
-            setItemOrders(response.data.rows);
+        useEffect(() => {
+            api.get(`/pedido/i/${requestId}`).then(response => {
 
-        });
-    }, [itemOrders]);
-
-    useEffect(() => { 
-        async  function definirTotal(){
-            const response = await api.put(`/pedido/p/${requestId}`)
-            setTotal(response.data[0].total);
-        }definirTotal();
-    }, [itemOrders]);
+                setItemOrders(response.data.rows);
+            });
+        }, [itemOrders]);
+    
+        useEffect(() => { 
+            async  function definirTotal(){
+                const response = await api.put(`/pedido/p/${requestId}`)
+                if((response.data).length == 0){
+                    setTotal(0);
+                }else{
+                    setTotal(response.data[0].total);
+                }
+                   
+            }definirTotal();
+            
+        }, [itemOrders]);
+        
+    
+        async function handleDeleteItem(id){
+            try{
+                const response = await api.delete(`ipedido/${id}`);
+    
+                setItemOrders(itemOrders.filter(item => item.id !== id));
+                toast.success(`${response.data.sucess}`, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            catch(err){
+                alert('Erro ao deletar item, tente novamente');
+    
+            }
+            
+        }
 
     var itemPedido;
-    if (itemOrders) {
+    if (itemOrders.length != 0) {
         itemPedido =
             <div className={styles.container}>
                 <div className={styles.left}>
@@ -74,11 +107,12 @@ const BagClient: React.FC = () => {
                                     <button onClick={() => handleIncreaseAmount(item.id, item.quantidade)}><FaPlus size={15} /></button>
                                 </div>
                                 <div className={styles.valor}>
-                                    {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor / item.quantidade)}
+                                    {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor_unitário)}
                                 </div>
                                 <div className={styles.totalDados}>
-                                    {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor)}
+                                    {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor_total)}
                                 </div>
+                                <button onClick={() => handleDeleteItem(item.id)}className={styles.deleteButton}><FiTrash2 size={22} color={"#F00"}/></button>
                             </div>
                         ))}
                     </div>
@@ -90,7 +124,7 @@ const BagClient: React.FC = () => {
                             {itemOrders.map(item => (
                                 <div className={styles.total} key={item.id}>
                                     <p>{`(${item.quantidade})  ${item.titulo_produto}`}</p>
-                                    <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor)}</p>
+                                    <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.valor_total)}</p>
                                 </div>
                             ))}
 
@@ -113,13 +147,13 @@ const BagClient: React.FC = () => {
                     <p>:</p>
                     <p>(</p>
                 </div>
-                <p>Não há produtos cadastrados no sistema!</p>
+                <p>Você ainda não colocou nenhum produto na sacola!</p>
 
             </div>
     }
     return (
         <>
-            <Header />
+            <Header display="none"/>
             <div className={styles.allContainer}>
                 <section className={styles.topSection}>
                     <div>

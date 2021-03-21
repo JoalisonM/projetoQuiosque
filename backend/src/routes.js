@@ -40,7 +40,7 @@ routes.put('/pedido/p/:id_pedido', PedidoController.updatePrice);
 routes.get('/pedido/i/:id', PedidoController.listItens);
 
 routes.get('/ipedido', ItemPedidoController.list);
-routes.post('/ipedido', ItemPedidoController.create);
+routes.put('/ipedido', ItemPedidoController.create);
 routes.delete('/ipedido/:id', ItemPedidoController.delete);
 routes.put('/ipedido/:id', ItemPedidoController.updateQuant);
 

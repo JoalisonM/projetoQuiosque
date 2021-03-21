@@ -8,6 +8,7 @@ import api from '../../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import swal from 'sweetalert';
+import { Console } from 'console';
 
 
 interface Product{
@@ -23,22 +24,9 @@ interface Product{
     disponibilidade: string;
 }
 
-interface ItemOrder {
-    id: string;
-
-    id_produto: string;
-
-    titulo_produto: string;
-
-    quantidade: number;
-
-    valor: number;
-
-}
 const MakeOrder: React.FC =  () => {
 
     const[products, setProducts] = useState<Product[]>([]);
-    const [itemOrders, setItemOrders] = useState<ItemOrder[]>([]);
     const[totalPages, setTotalPages] = useState(0);
     const[limit, setLimit] = useState(9);
     const[pages, setPages] = useState([]);
@@ -59,7 +47,7 @@ const MakeOrder: React.FC =  () => {
     async function HandleCreateItemRequest(id: string) {
         try{
             console.log({id, idClient, RequestId});
-            const response = await api.post('/ipedido', {
+            const response = await api.put('/ipedido', {
             
                 id_produto: id,
                 id_cliente: idClient,
@@ -137,7 +125,7 @@ const MakeOrder: React.FC =  () => {
 
     return(
         <>
-        <Header/>
+        <Header display="none"/>
         <div className={styles.allContainer}>
             <section className={styles.topSection}>
                 <div>

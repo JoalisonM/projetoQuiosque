@@ -9,20 +9,32 @@ import { Link, useHistory } from 'react-router-dom';
 import   api   from '../../services/api'; 
 import  styles from './styles.module.css';
 
-const Header: React.FC =  () => {
+function Header(props){
+    
+    const style = {
+        display : `${props.display}`
+    }
+    
+
     const clientId = localStorage.getItem('IdCliente');
     const clientName = localStorage.getItem('NomeCliente');
     const history = useHistory();
 
     async function handleCreateRequest(){
-        console.log("entrou");
-        const response = await api.post('/pedido', {id_cliente: clientId});
-        localStorage.setItem('IdPedido', response.data.id_pedido);
+        const requestId = localStorage.getItem('IdPedido');
+        if(!requestId){
+            const response = await api.post('/pedido', {id_cliente: clientId});
+            localStorage.setItem('IdPedido', response.data.id_pedido);
+        }
+        
     }
 
     function handleLogout (){
         
-        localStorage.clear();
+        localStorage.removeItem('IdCliente');
+        localStorage.removeItem('NomeCliente')
+        localStorage.removeItem('EstaLogadoC');
+
 
         history.push('/');
     }
@@ -71,7 +83,7 @@ const Header: React.FC =  () => {
                     </div>
 
                     <div className={styles.headerMenu}>
-                        <ul className={styles.menuOptions}>
+                        <ul className={styles.menuOptions} style={style}>
                             <li className={styles.options}>
                                 <Link to={'/homepage'}>Sobre o IFood</Link>
                             </li>

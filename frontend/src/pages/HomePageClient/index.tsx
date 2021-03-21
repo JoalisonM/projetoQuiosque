@@ -11,7 +11,6 @@ const HomePageClient: React.FC = () => {
     
     const history = useHistory();
     const isLogged = localStorage.getItem('EstaLogadoC');
-    
     return(
         <>
             <Header/>

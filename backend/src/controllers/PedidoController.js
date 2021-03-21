@@ -80,7 +80,7 @@ module.exports = {
 
         var preco = 0;
         for( i = 0; i < valores.length; i ++){
-            preco += valores[i].valor;
+            preco += valores[i].valor_total;
         }
 
 
@@ -91,7 +91,7 @@ module.exports = {
         });
 
         const pedido = await connection('pedido')
-        .select('*')
+        .select('total')
         .where('id', id_pedido);
 
         return response.status(200).json(pedido);
