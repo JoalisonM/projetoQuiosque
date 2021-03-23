@@ -38,7 +38,7 @@ const MakeOrder: React.FC =  () => {
     const history = useHistory();
     
     const Produts = useEffect(() => {
-        api.get('/produto').then(response => {
+        api.get('/produto/d').then(response => {
         setProducts(response.data.rows)
         
         })}, 
@@ -84,7 +84,9 @@ const MakeOrder: React.FC =  () => {
         <div className={styles.menuGrid}>   
             {products.map(product => (
                     
-            <div key={product.id}className={styles.product}>
+                    
+
+            <div key={product.id} className={styles.product}>
                 <div className={styles.top}>
                     <h2>{product.titulo}</h2>
                     <div>

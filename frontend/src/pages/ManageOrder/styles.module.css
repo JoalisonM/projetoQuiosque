@@ -5,7 +5,6 @@
     margin-top: 113px;
     padding-bottom: 50px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    height: 1000px;
 }
 
 .topSection h1{
@@ -14,7 +13,7 @@
     font-size: 30px;
     margin-left: 30px;
     border-bottom: 3px solid #F00;
-    width: 300px;
+    width: 250px;
 }
 
 .topSection div{
@@ -79,7 +78,7 @@
 
 .order{
     width: 390px;
-    height: 200px;
+    height: 140px;
     padding: 25px 25px;
     background-color: var(--menu-background);
     border: 1px solid #29292944;
@@ -119,9 +118,8 @@
     left: 0;
 }
 .top div button:hover:last-child{
-    color: rgba(255, 0, 0, 0.734);
+    color: var(--green);
 }
-
 
 .order:hover .price div{
     width: 100%;
@@ -139,6 +137,9 @@
     width: 100%;
 }
 
+.status{
+    color: #505050;
+}
 .ordersClient {
     margin-top: 0.8rem;
     font-family: 'Roboto Condensed', sans-serif;

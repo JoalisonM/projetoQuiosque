@@ -27,6 +27,7 @@ routes.delete('/funcionario/:id', FuncionarioController.delete);
 
 
 routes.get('/produto', ProdutoController.list);
+routes.get('/produto/d', ProdutoController.listByDisponibility);
 routes.get('/produto/:id', ProdutoController.getById);
 routes.post('/produto', ProdutoController.create);
 routes.put('/produto/:id', ProdutoController.update);
@@ -38,6 +39,9 @@ routes.delete('/pedido/:id', PedidoController.delete);
 routes.put('/pedido/st/:id', PedidoController.updateStatus);  
 routes.put('/pedido/p/:id_pedido', PedidoController.updatePrice);
 routes.get('/pedido/i/:id', PedidoController.listItens);
+routes.get('/pedido/client/:id_cliente', PedidoController.listByClientId);
+routes.get('/pedido/client/progress/:id_cliente', PedidoController.listRequestsInProgressByClient);
+routes.get('/pedido/progress', PedidoController.listRequestsInProgress);
 
 routes.get('/ipedido', ItemPedidoController.list);
 routes.put('/ipedido', ItemPedidoController.create);

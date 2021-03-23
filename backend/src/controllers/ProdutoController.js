@@ -41,6 +41,33 @@ module.exports = {
 
     },
 
+    async listByDisponibility(request, response){
+        const { page = 1} = request.query;
+
+        const [count] = await connection('produto').count();
+
+        const produto = await connection('produto')
+            .limit(9)
+            .offset((page - 1) * 9)
+            .select('*')
+            .where({ disponibilidade: "Tem"});
+
+        let produtos = {count: count['count(*)'], rows: produto};
+
+       
+
+        if (produto.length == 0){
+            return response.json({mensagem: "não há produtos disponíveis no sistema"});
+        }
+        else{
+
+            response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+
+
+            return response.json(produtos);
+        }
+    },
+
     async create(request, response, next) {
         try {
             const { titulo, descricao, valor} = request.body;

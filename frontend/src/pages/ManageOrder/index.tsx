@@ -12,6 +12,14 @@ import swal from 'sweetalert';
 interface ItemOrder {
     id: string;
 
+    titulo_produto: string;
+
+    quantidade: number;
+}
+
+interface Order {
+    id: string;
+
     id_cliente: string;
 
     nome_cliente: string;
@@ -21,46 +29,67 @@ interface ItemOrder {
     status: string;
 }
 
+
 const ManageOrder: React.FC =  () => {
-    const[orders, setOrders] = useState<ItemOrder[]>([]);
-    const[totalPages, setTotalPages] = useState(0);
-    const[limit, setLimit] = useState(9);
-    const[pages, setPages] = useState([]);
+
+    const[ orders, setOrders ] = useState<Order[]>([]);
+    const[ itemOrders, setItemOrders ] = useState<ItemOrder[]>([]);
+    const[ limit, setLimit ] = useState(9);
+    const[ pages, setPages ] = useState([]);
 
     const idFunc = localStorage.getItem("IdFuncionario");
 
     const history = useHistory();
     
-    const Produts = useEffect(() => {
-        api.get('/pedidos').then(response => {
-        setOrders(response.data.rows)
-        setTotalPages(response.headers['x-total-count']);
-        
-        })}, 
-        [idFunc]);
+        async function atualizarPedidos(){
+           const response =  await api.get('/pedido/progress'); 
+            setOrders(response.data);
+        }
 
+        atualizarPedidos();
+        
+        
+    async function handleCheckOrder(id){
+        
+            api.put(`/pedido/st/${id}`, { status: 'Finalizado'});
+
+
+            toast.success('Pedido Finalizado', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+    }    
     var pedido;
+
     if(orders) {
         pedido =
         <div className={styles.menuGrid}>
-            <div className={styles.order}>
+
+            {orders.map(order => (
+            
+            <div key={order.id} className={styles.order}>
                 <div className={styles.top}>
-                    <h2>Joalison Matheus</h2>
+                    <h2>{order.nome_cliente}</h2>
                     <div>
-                        <button><FaCheckCircle size={30}/></button>
+                        <button onClick={() => handleCheckOrder(order.id)}><FaCheckCircle size={30}/></button>
                     </div>
                 </div>
-                <div className={styles.products}>
-                    <p className={styles.ordersClient}>Pastel de flango</p>
-                    <p className={styles.qtd}>1</p>
-                </div>
+                            
                 <div className={styles.value}>
                     <p className={styles.price}>
-                        R$ 4,00
+                    {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(order.total)}
                         <div></div>
                     </p>
+                    <p className={styles.status}>{order.status}</p>
                 </div>
             </div>
+            
+            ))}
         </div>
     }
     else {

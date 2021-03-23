@@ -16,7 +16,7 @@ const EditClient: React.FC = () => {
     const [ cpf, setCpf] = useState('');
     const isLogged = localStorage.getItem('EstaLogadoC');
     const history = useHistory();
-    
+    const RequestId = localStorage.getItem('IdPedido');    
 
     useEffect(() => {
         if(isLogged != 'true'){
@@ -31,6 +31,15 @@ const EditClient: React.FC = () => {
     },  []);
 
 
+    useEffect(() => {
+        api.get(`/pedido/i/${RequestId}`).then(response => {
+            if((response.data.rows).length == 0){
+                api.delete(`/pedido/${RequestId}`);
+            }
+        })        
+    }, []);
+
+
     useEffect(() =>{
         api.get(`/cliente/${idCliente}`).then(response => {
             console.log(response);
@@ -40,6 +49,7 @@ const EditClient: React.FC = () => {
         })
     }, []);
 
+    
     function redirect(){
         setTimeout(function(){ history.push('/login'); }, 1000);
     }

@@ -30,6 +30,9 @@ const BagClient: React.FC = () => {
     const requestId = localStorage.getItem('IdPedido');
     const history = useHistory();
 
+    function redirect(){
+        setTimeout(function(){ history.push('/homepage'); }, 1000);
+    }
 
     async function handleIncreaseAmount(id: string, quantidade: number) {
         api.put(`/ipedido/${id}`, { quantidade: quantidade + 1 });
@@ -80,6 +83,22 @@ const BagClient: React.FC = () => {
     
             }
             
+        }
+
+        async function handleUpdateStatusToInProgress(){
+            api.put(`/pedido/st/${requestId}`,{ status : 'Em Andamento'})
+
+            toast.success("Seu Pedido foi enviado, e logo estará disponível para busca :)", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+
+            redirect();
         }
 
     var itemPedido;
@@ -135,7 +154,7 @@ const BagClient: React.FC = () => {
 
                         </div>
                         <Link to={'/morder'}><button className={styles.backMenu}>Escolher mais produtos</button></Link>
-                        <button> Finalizar pedido </button>
+                        <button onClick={() => handleUpdateStatusToInProgress()}> Finalizar pedido </button>
                     </div>
                 </div>
             </div>

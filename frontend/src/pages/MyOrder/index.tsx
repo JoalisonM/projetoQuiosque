@@ -21,26 +21,51 @@ interface Order {
 }
 
 const MyOrder: React.FC =  () => {
+    
     const[orders, setOrders] = useState<Order[]>([]);
+    const ClientId = localStorage.getItem('IdCliente');
 
-    var status;
+    useEffect(() => {
+        api.get(`/pedido/client/progress/${ClientId}`).then(response => {
+            setOrders((response.data).reverse());
+        })
+    }, []);
+    var status; 
     if(orders) {
         status =
         <div className={styles.menuGrid}>
-            <div className={styles.pedido}>
+            {orders.map( order => (
+            
+            <div key={order.id} className={styles.pedido}>
                 <div className={styles.top}>
-                    <h2>ID: abc1235adsd</h2>
+                    <h2>ID: {order.id}</h2>
                 </div>
-                <p className={styles.info}>
-                    Em andamento
+
+                { order.status == "Em Andamento" &&
+                
+                <p className={`${styles.info}`}>
+                    {order.status}
                 </p>
+                
+                }
+
+                { order.status == "Finalizado" &&
+
+                <p className={`${styles.info} ${styles.green}`}>
+                    {order.status}
+                </p>
+                
+                }
+
+
                 <div className={styles.value}>
                     <p className={styles.price}>
-                        R$ 100,00
+                        {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(order.total)}
                         <div></div>
                     </p>
                 </div>
-            </div>
+            
+            </div>))}
         </div>
     }
     else {

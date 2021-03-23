@@ -5,7 +5,7 @@
     margin-top: 113px;
     padding-bottom: 50px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    height: 1000px;
+
 }
 
 .topSection h1{
@@ -14,7 +14,7 @@
     font-size: 30px;
     margin-left: 30px;
     border-bottom: 3px solid #F00;
-    width: 300px;
+    width: 195px;
 }
 
 .topSection div{
@@ -111,7 +111,7 @@
     text-transform: uppercase;
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
-    font-size: 28px;
+    font-size: 26px;
     border-bottom:  2px solid var(--green) ;
 }
 
@@ -125,6 +125,12 @@
     margin-bottom: 6px;
     height: 64px;
 }
+
+.green{
+    color: var(--green);
+}
+
+
 
 .pedido div{
     display: flex;

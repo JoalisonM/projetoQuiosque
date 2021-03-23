@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './styles.module.css';
 import IFood from '../../assets/IFoodLogo.svg';
 import { FaUserTie, FaUserPlus } from 'react-icons/fa';
@@ -9,11 +9,24 @@ import api from '../../services/api';
 
 
 const Login: React.FC = () => {
-    localStorage.clear();
+    
+    
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
-
+    const RequestId = localStorage.getItem('IdPedido');
     const history = useHistory();
+
+
+    useEffect(() => {
+        api.get(`/pedido/i/${RequestId}`).then(response => {
+            if((response.data.rows).length == 0){
+                api.delete(`/pedido/${RequestId}`);
+            }
+        })        
+    }, []);
+
+    localStorage.clear();
+    
 
     async function handeLogin(e: { preventDefault: () => void; }) {
         e.preventDefault();

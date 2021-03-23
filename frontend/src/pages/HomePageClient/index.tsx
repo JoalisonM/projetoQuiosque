@@ -6,11 +6,23 @@ import Header from '../../components/Header/client';
 import Footer from '../../components/Footer';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './styles.module.css';
-/*import '@fortawesome/fontawesome-free/css/all.min.css';*/       
+import api from '../../services/api';
+
 const HomePageClient: React.FC = () => {
     
     const history = useHistory();
     const isLogged = localStorage.getItem('EstaLogadoC');
+    const RequestId = localStorage.getItem('IdPedido');
+
+    useEffect(() => {
+        api.get(`/pedido/i/${RequestId}`).then(response => {
+            if((response.data.rows).length == 0){
+                api.delete(`/pedido/${RequestId}`);
+            }
+        })        
+    }, []);
+
+    
     return(
         <>
             <Header/>

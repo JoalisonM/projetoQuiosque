@@ -48,8 +48,8 @@ module.exports = {
                 .where({ id_produto, id_pedido })
                 .update({ quantidade: itemIgual[0].quantidade + 1,});
 
-
-                connection('itemPedido')
+            
+                
 
                 return response.status(201).json({ sucess: ` + 1 ${titulo_produto} foi adcionado a sua sacola.`});
                 

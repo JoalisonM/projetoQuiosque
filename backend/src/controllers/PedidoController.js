@@ -1,5 +1,6 @@
 const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
+const ItemPedidoController = require('../controllers/ItemPedidoController');
 
 module.exports = {
 
@@ -34,7 +35,7 @@ module.exports = {
             
 
             const total = 0;
-            const status = 'Em Andamento';
+            const status = 'O cliente está escolhendo o(s) produto(s).';
             await connection('pedido').insert({
                 id,
                 id_cliente,
@@ -105,12 +106,12 @@ module.exports = {
         
         const { id } = request.params;
 
-        const { mensagem } = request.body;
+        const { status } = request.body;
         
         await connection('pedido')
         .where({id})
         .update({
-            status: mensagem
+            status: status
         });
 
 
@@ -135,6 +136,42 @@ module.exports = {
 
 
         return response.json({count: count, rows: itens});
+    },
+
+    async listByClientId(request, response){
+
+        const { id_cliente } = request.params;
+
+        const pedidos = await connection('pedido')
+        .select('*')
+        .where({ id_cliente });
+
+        return response.json(pedidos);
+    },
+
+    async listRequestsInProgressByClient(request, response){
+
+        const { id_cliente } = request.params;
+
+        const pedidos = await connection('pedido')
+        .select('*')
+        .where({ id_cliente})
+        .andWhereNot({status: "O cliente está escolhendo o(s) produto(s)."});
+
+        return response.json(pedidos);
+        
+    },
+
+    async listRequestsInProgress(request, response){
+
+        
+        const pedidos = await connection('pedido')
+        .select('*')
+        .where({status: "Em Andamento"})
+        
+        
+        return response.json(pedidos);
+    
     }
 
 
